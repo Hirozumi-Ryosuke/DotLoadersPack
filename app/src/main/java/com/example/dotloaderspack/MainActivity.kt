@@ -2,8 +2,11 @@ package com.example.dotloaderspack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import com.example.dotloaderspack.dotsloader.loaders.*
 
 class MainActivity : AppCompatActivity() {
 
