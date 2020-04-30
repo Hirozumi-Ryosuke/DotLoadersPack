@@ -1,6 +1,7 @@
 package com.example.dotloaderspack
 
 import android.R
+import android.graphics.Color.red
 import android.os.Bundle
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
