@@ -1,6 +1,8 @@
 package com.example.dotloaderspack.dotsloader.basicviews
 
 import android.content.Context
+import android.util.AttributeSet
+import com.example.dotloaderspack.dotsloader.contracts.CircularAbstractView
 
 class CircularLoaderBaseView : CircularAbstractView {
 

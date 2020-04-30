@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.agrawalsuneet.loaders.MainActivity">
+    tools:context="com.example.dotloaderspack.MainActivity">
 
     <com.agrawalsuneet.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"

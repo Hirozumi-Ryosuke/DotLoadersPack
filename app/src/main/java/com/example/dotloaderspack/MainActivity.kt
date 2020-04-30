@@ -1,54 +1,38 @@
 package com.example.dotloaderspack
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.DecelerateInterpolator
-import android.view.animation.LinearInterpolator
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.dotsloader.loaders.*
 
+
 class MainActivity : AppCompatActivity() {
+
+    lateinit var containerLL: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_lineardotsloader)
+        setContentView(R.layout.main_lights)
 
-        supportActionBar?.title = "BounceLoader"
+        supportActionBar?.title = "LightsLoader"
 
-        containerLL = findViewById<LinearLayout>(R.id.container)
+        containerLL = findViewById(R.id.container)
 
-    }
+        //initLinearDotsLoader()
+        //initCircularDotsLoader()
+        //initLazyLoader()
+        //initTashieLoader()
+        //initSlidongLoader()
+        //initRotatingCircularDotsLoader()
 
-    private fun initBounceLoader() {
-        val bounceLoader = BounceLoader(context = this,
-            ballRadius = 60,
-            ballColor = ContextCompat.getColor(this, R.color.red),
-            showShadow = true,
-            shadowColor = ContextCompat.getColor(this, R.color.black))
-            .apply {
-                animDuration = 1000
-            }
+        //initTrailingCirculerDotsLoader()
 
-        containerLL.addView(bounceLoader)
-    }
+        //initZeeLoader()
 
-    private fun initPullInLoader() {
-        val pullInLoader = PullInLoader(this,
-            20, 100, ContextCompat.getColor(this, R.color.red))
-            .apply {
-                animDuration = 2000
-            }
-
-        containerLL.addView(pullInLoader)
-
-        val pullInLoader2 = PullInLoader(this,
-            30, 160, resources.getIntArray(R.array.vibgyorg))
-            .apply {
-                animDuration = 2000
-            }
-
-        containerLL.addView(pullInLoader2)
+        //initAllianceLoader()
+        //initLightsLoader()
     }
 
     private fun initLightsLoader() {
@@ -107,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         containerLL.addView(trailingCircularDotsLoader)
     }
 
+
     private fun initRotatingCircularDotsLoader() {
         val loader = RotatingCircularDotsLoader(this,
             20, 60, ContextCompat.getColor(this, R.color.red))
@@ -137,7 +122,7 @@ class MainActivity : AppCompatActivity() {
             .apply {
                 animDuration = 500
                 animDelay = 100
-                interpolator = LinearInterpolator()
+                interpolator = AnticipateOvershootInterpolator()
             }
         containerLL.addView(tashie)
     }
@@ -151,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 animDuration = 500
                 firstDelayDuration = 100
                 secondDelayDuration = 200
-                interpolator = DecelerateInterpolator()
+                interpolator = AnticipateOvershootInterpolator()
             }
 
         /*var lazyLoader = LazyLoader(this).apply{
@@ -198,6 +183,4 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
 }

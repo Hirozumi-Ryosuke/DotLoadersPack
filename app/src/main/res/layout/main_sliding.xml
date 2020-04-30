@@ -8,7 +8,7 @@
     android:background="@color/grey_cool"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.agrawalsuneet.loaders.MainActivity">
+    tools:context="com.example.dotloaderspack.MainActivity">
 
     <com.agrawalsuneet.dotsloader.loaders.SlidingLoader
         android:layout_width="wrap_content"

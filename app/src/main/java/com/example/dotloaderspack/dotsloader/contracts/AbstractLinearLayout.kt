@@ -1,8 +1,8 @@
 package com.example.dotloaderspack.dotsloader.contracts
 
 import android.content.Context
-import android.graphics.Interpolator
 import android.util.AttributeSet
+import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import com.example.dotloaderspack.R
@@ -11,7 +11,7 @@ abstract class AbstractLinearLayout : LinearLayout, LoaderContract {
 
     open var animDuration: Int = 500
 
-    open var interpolator: Interpolator = LinearInterpolator()
+    open var interpolator: AnticipateOvershootInterpolator = LinearInterpolator()
 
     var dotsRadius: Int = 30
 
