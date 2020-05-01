@@ -3,13 +3,13 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.Gravity.*
 import android.view.ViewTreeObserver
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.RelativeLayout.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
@@ -93,10 +93,10 @@ class ZeeLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = CENTER_HORIZONTAL
+        this.gravity = Gravity.CENTER_HORIZONTAL
 
         relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = CENTER_HORIZONTAL
+        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
 
 
         if (calWidthHeight == 0) {
@@ -105,15 +105,15 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
         firstCircle = CircleView(context, dotsRadius, firsDotColor)
         val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        firstParam.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
-        firstParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
+        firstParam.addRule(ALIGN_PARENT_TOP, TRUE)
+        firstParam.addRule(ALIGN_PARENT_LEFT, TRUE)
 
         relativeLayout.addView(firstCircle, firstParam)
 
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
         val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
+        secondParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
+        secondParam.addRule(ALIGN_PARENT_RIGHT, TRUE)
 
         relativeLayout.addView(secondCircle, secondParam)
 
