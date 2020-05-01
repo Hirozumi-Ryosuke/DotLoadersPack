@@ -9,16 +9,16 @@ import com.example.dotloaderspack.R
 
 class CircleView : View {
 
-    var circleRadius: Int = 30
-    var strokeWidth: Int = 0
+    var circleRadius = 30
+    var strokeWidth = 0
 
-    var circleColor: Int = 0
-    var drawOnlyStroke: Boolean = false
+    var circleColor = 0
+    var drawOnlyStroke = false
 
-    var isAntiAlias: Boolean = true
+    var isAntiAlias = true
 
-    private var xyCordinates: Float = 0.0f
-    private val paint: Paint = Paint()
+    private var xyCordinates = 0.0f
+    private val paint = Paint()
 
     constructor(context: Context, circleRadius: Int, circleColor: Int, isAntiAlias: Boolean = true) : super(context) {
         this.circleRadius = circleRadius
