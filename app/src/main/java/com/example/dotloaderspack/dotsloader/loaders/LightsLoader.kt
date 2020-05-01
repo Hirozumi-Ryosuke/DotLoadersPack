@@ -1,13 +1,15 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
+import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.*
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
-import com.example.dotloaderspack.R
+import android.widget.LinearLayout.LayoutParams.*
+import androidx.core.content.ContextCompat.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 import com.example.dotloaderspack.dotsloader.utils.random
@@ -22,7 +24,7 @@ class LightsLoader : LinearLayout, LoaderContract {
     var circleRadius: Int = 30
     var circleDistance: Int = 10
 
-    var circleColor: Int = ContextCompat.getColor(context, android.R.color.holo_purple)
+    var circleColor: Int = getColor(context, holo_purple)
 
     private var calWidthHeight: Int = 0
 
@@ -53,15 +55,17 @@ class LightsLoader : LinearLayout, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LightsLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, LightsLoader, 0, 0)
 
-        noOfCircles = typedArray.getInteger(R.styleable.LightsLoader_lights_noOfCircles, 3)
+        noOfCircles = typedArray.getInteger(LightsLoader_lights_noOfCircles, 3)
 
-        circleRadius = typedArray.getDimensionPixelSize(R.styleable.LightsLoader_lights_circleRadius, 30)
-        circleDistance = typedArray.getDimensionPixelSize(R.styleable.LightsLoader_lights_circleDistance, 10)
+        circleRadius = typedArray.getDimensionPixelSize(LightsLoader_lights_circleRadius, 30)
+        circleDistance = typedArray.getDimensionPixelSize(LightsLoader_lights_circleDistance, 10)
 
-        circleColor = typedArray.getColor(R.styleable.LightsLoader_lights_circleColor,
-            ContextCompat.getColor(context, android.R.color.holo_purple))
+        circleColor = typedArray.getColor(
+            LightsLoader_lights_circleColor,
+            getColor(context, holo_purple)
+        )
 
         typedArray.recycle()
     }
@@ -81,7 +85,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        orientation = LinearLayout.VERTICAL
+        orientation = VERTICAL
 
         circlesList = ArrayList()
 
@@ -91,9 +95,10 @@ class LightsLoader : LinearLayout, LoaderContract {
 
         for (countI in 0 until noOfCircles) {
             val linearLayout = LinearLayout(context)
-            linearLayout.orientation = LinearLayout.HORIZONTAL
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            linearLayout.orientation = HORIZONTAL
+            val params = LayoutParams(
+                WRAP_CONTENT, WRAP_CONTENT
+            )
 
             if (countI != 0) {
                 params.topMargin = circleDistance
@@ -104,12 +109,11 @@ class LightsLoader : LinearLayout, LoaderContract {
             for (countJ in 0 until noOfCircles) {
                 val circleView = CircleView(context, circleRadius, circleColor)
 
-                val innerParam = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                val innerParam = LayoutParams(
+                    WRAP_CONTENT, WRAP_CONTENT
+                )
 
-                if (countJ != 0) {
-                    innerParam.leftMargin = circleDistance
-                }
+                if (countJ != 0) innerParam.leftMargin = circleDistance
 
                 linearLayout.addView(circleView, innerParam)
                 circlesList.add(circleView)
@@ -118,7 +122,7 @@ class LightsLoader : LinearLayout, LoaderContract {
             addView(linearLayout)
         }
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
                 this@LightsLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
@@ -128,9 +132,7 @@ class LightsLoader : LinearLayout, LoaderContract {
 
     private fun startLoading() {
         for (count in 0 until noOfCircles) {
-            for (item in circlesList) {
-                item.startAnimation(getAlphaAnimation())
-            }
+            for (item in circlesList) item.startAnimation(getAlphaAnimation())
         }
     }
 
@@ -138,13 +140,11 @@ class LightsLoader : LinearLayout, LoaderContract {
         val fromAplha = (0.5f..1.0f).random()
         val toAplha = (0.1f..0.5f).random()
 
-        val alphaAnim = AlphaAnimation(fromAplha, toAplha)
+        return AlphaAnimation(fromAplha, toAplha)
             .apply {
                 duration = (100..1000).random().toLong()
                 repeatMode = Animation.REVERSE
                 repeatCount = Animation.INFINITE
             }
-
-        return alphaAnim
     }
 }
