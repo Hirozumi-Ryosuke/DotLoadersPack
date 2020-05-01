@@ -3,6 +3,7 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.Gravity.*
 import android.view.ViewTreeObserver
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
@@ -13,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
@@ -62,21 +64,17 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, ZeeLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
+        this.dotsRadius = typedArray.getDimensionPixelSize(ZeeLoader_zee_dotsRadius, 50)
 
-        this.distanceMultiplier = typedArray.getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
+        this.distanceMultiplier = typedArray.getInteger(ZeeLoader_zee_distanceMultiplier, 4)
 
-        this.firsDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
-            getColor(context, loader_selected)
-        )
+        this.firsDotColor = typedArray.getColor(ZeeLoader_zee_firstDotsColor, getColor(context, loader_selected))
 
-        this.secondDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
-            getColor(context, loader_selected)
-        )
+        this.secondDotColor = typedArray.getColor(ZeeLoader_zee_secondDotsColor, getColor(context, loader_selected))
 
-        this.animDuration = typedArray.getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
+        this.animDuration = typedArray.getInt(ZeeLoader_zee_animDuration, 500)
 
         typedArray.recycle()
     }
@@ -84,8 +82,8 @@ class ZeeLoader : LinearLayout, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        if (calWidthHeight == 0) {
-            calWidthHeight = (2 * dotsRadius * distanceMultiplier)
+        when (calWidthHeight) {
+            0 -> calWidthHeight = (2 * dotsRadius * distanceMultiplier)
         }
 
         setMeasuredDimension(calWidthHeight, calWidthHeight)
@@ -95,10 +93,10 @@ class ZeeLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        this.gravity = CENTER_HORIZONTAL
 
         relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
+        relativeLayout.gravity = CENTER_HORIZONTAL
 
 
         if (calWidthHeight == 0) {
