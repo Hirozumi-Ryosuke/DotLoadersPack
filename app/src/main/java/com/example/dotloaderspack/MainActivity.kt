@@ -7,6 +7,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.id.*
+import com.example.dotloaderspack.R.layout.*
 import com.example.dotloaderspack.dotsloader.loaders.*
 
 
@@ -16,11 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_lights)
+        setContentView(main_lights)
 
         supportActionBar?.title = "LightsLoader"
 
-        containerLL = findViewById(R.id.container)
+        containerLL = findViewById(container)
 
         initLinearDotsLoader()
         initCircularDotsLoader()
@@ -139,7 +141,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        val lazyLoader = LazyLoader(this, 15, 5,
+        val lazyLoader = LazyLoader(
+            this,
+            15,
+            5,
             getColor(this, loader_selected),
             getColor(this, loader_selected),
             getColor(this, loader_selected)
@@ -151,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 interpolator = AnticipateOvershootInterpolator()
             }
 
-        /*var lazyLoader = LazyLoader(this).apply{
+        /*val lazyLoader = LazyLoader(this).apply{
             animDuration = 500
             firstDelayDuration = 100
             secondDelayDuration = 200
