@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
+import android.view.animation.Animation.*
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
@@ -91,10 +92,9 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
 
-        if (visibility != View.VISIBLE) {
-            initView()
-        } else {
-            circularLoaderBaseView.clearAnimation()
+        when {
+            visibility != VISIBLE -> initView()
+            else -> circularLoaderBaseView.clearAnimation()
         }
     }
 
@@ -107,12 +107,12 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
     private fun getRotateAnimation(): RotateAnimation {
 
         val transAnim = RotateAnimation(0f, 360f,
-            Animation.RELATIVE_TO_SELF, 0.5f,
-            Animation.RELATIVE_TO_SELF, 0.5f)
+            RELATIVE_TO_SELF, 0.5f,
+            RELATIVE_TO_SELF, 0.5f)
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
-        transAnim.repeatCount = Animation.INFINITE
-        transAnim.repeatMode = Animation.RESTART
+        transAnim.repeatCount = INFINITE
+        transAnim.repeatMode = RESTART
         transAnim.interpolator = LinearInterpolator()
 
         return transAnim
