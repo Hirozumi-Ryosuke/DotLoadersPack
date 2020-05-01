@@ -2,10 +2,13 @@ package com.example.dotloaderspack.dotsloader.contracts
 
 import android.content.Context
 import android.graphics.Paint
+import android.graphics.Paint.*
+import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.utils.Helper
 
@@ -40,8 +43,8 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
         val typedArray = context.obtainStyledAttributes(attrs, DotsLoaderBaseView, 0, 0)
 
-        this.defaultColor = typedArray.getColor(DotsLoaderBaseView_loader_defaultColor, ContextCompat.getColor(context, R.color.loader_defalut))
-        this.selectedColor = typedArray.getColor(DotsLoaderBaseView_loader_selectedColor, ContextCompat.getColor(context, R.color.loader_defalut))
+        this.defaultColor = typedArray.getColor(DotsLoaderBaseView_loader_defaultColor, ContextCompat.getColor(context, loader_defalut))
+        this.selectedColor = typedArray.getColor(DotsLoaderBaseView_loader_selectedColor, ContextCompat.getColor(context, loader_defalut))
 
         this.radius = typedArray.getDimensionPixelSize(DotsLoaderBaseView_loader_circleRadius, 30)
 
@@ -61,12 +64,12 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     fun initPaints() {
         defaultCirclePaint = Paint()
         defaultCirclePaint?.isAntiAlias = true
-        defaultCirclePaint?.style = Paint.Style.FILL
+        defaultCirclePaint?.style = FILL
         defaultCirclePaint?.color = defaultColor
 
         selectedCirclePaint = Paint()
         selectedCirclePaint?.isAntiAlias = true
-        selectedCirclePaint?.style = Paint.Style.FILL
+        selectedCirclePaint?.style = FILL
         selectedCirclePaint?.color = selectedColor
     }
 
@@ -81,12 +84,12 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
             firstShadowPaint = Paint()
             firstShadowPaint.isAntiAlias = true
-            firstShadowPaint.style = Paint.Style.FILL
+            firstShadowPaint.style = FILL
             firstShadowPaint.color = firstShadowColor
 
             secondShadowPaint = Paint()
             secondShadowPaint.isAntiAlias = true
-            secondShadowPaint.style = Paint.Style.FILL
+            secondShadowPaint.style = FILL
             secondShadowPaint.color = secondShadowColor
         }
     }
@@ -107,7 +110,7 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
             defaultCirclePaint?.color = defaultColor
         }
 
-    open var selectedColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
+    open var selectedColor: Int = ContextCompat.getColor(context, loader_defalut)
         set(selectedColor) {
             field = selectedColor
             selectedCirclePaint?.let {
