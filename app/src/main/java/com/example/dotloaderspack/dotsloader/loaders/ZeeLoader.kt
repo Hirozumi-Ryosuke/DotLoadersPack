@@ -21,23 +21,23 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
     var dotsRadius = 50
 
-    private var distanceMultiplier = 4
+    var distanceMultiplier = 4
         set(value) {
             field = if (value < 1) 1
             else value
         }
 
-    private var firsDotColor = getColor(context, loader_selected)
-    private var secondDotColor = getColor(context, loader_selected)
+    var firsDotColor = getColor(context, loader_selected)
+    var secondDotColor = getColor(context, loader_selected)
 
     var animDuration = 500
 
-    private var step = 0
+    var step = 0
 
-    private var calWidthHeight = 0
-    private lateinit var firstCircle: CircleView
-    private lateinit var secondCircle: CircleView
-    private lateinit var relativeLayout: RelativeLayout
+    var calWidthHeight = 0
+    lateinit var firstCircle: CircleView
+    lateinit var secondCircle: CircleView
+    lateinit var relativeLayout: RelativeLayout
 
     constructor(context: Context) : super(context) {
         initView()
@@ -65,15 +65,15 @@ class ZeeLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, ZeeLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(ZeeLoader_zee_dotsRadius, 50)
+        dotsRadius = typedArray.getDimensionPixelSize(ZeeLoader_zee_dotsRadius, 50)
 
-        this.distanceMultiplier = typedArray.getInteger(ZeeLoader_zee_distanceMultiplier, 4)
+        distanceMultiplier = typedArray.getInteger(ZeeLoader_zee_distanceMultiplier, 4)
 
-        this.firsDotColor = typedArray.getColor(ZeeLoader_zee_firstDotsColor, getColor(context, loader_selected))
+        firsDotColor = typedArray.getColor(ZeeLoader_zee_firstDotsColor, getColor(context, loader_selected))
 
-        this.secondDotColor = typedArray.getColor(ZeeLoader_zee_secondDotsColor, getColor(context, loader_selected))
+        secondDotColor = typedArray.getColor(ZeeLoader_zee_secondDotsColor, getColor(context, loader_selected))
 
-        this.animDuration = typedArray.getInt(ZeeLoader_zee_animDuration, 500)
+        animDuration = typedArray.getInt(ZeeLoader_zee_animDuration, 500)
 
         typedArray.recycle()
     }
