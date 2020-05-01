@@ -4,10 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.*
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.RelativeLayout.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
@@ -105,28 +107,34 @@ class BounceLoader : LinearLayout, LoaderContract {
         relativeLayout = RelativeLayout(context)
 
         if (showShadow) {
-            ballShadowView = CircleView(context = context,
+            ballShadowView = CircleView(
+                context = context,
                 circleRadius = ballRadius,
                 circleColor = shadowColor,
                 isAntiAlias = false)
 
             val shadowParam = RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT)
-            shadowParam.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
-            shadowParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
+                WRAP_CONTENT,
+                WRAP_CONTENT
+            )
+            shadowParam.addRule(CENTER_HORIZONTAL, TRUE)
+            shadowParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
             relativeLayout?.addView(ballShadowView, shadowParam)
         }
 
-        ballCircleView = CircleView(context = context,
+        ballCircleView = CircleView(
+            context = context,
             circleRadius = ballRadius,
-            circleColor = ballColor)
+            circleColor = ballColor
+        )
 
-        val ballParam = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT)
+        val ballParam = RelativeLayout.LayoutParams(
+            WRAP_CONTENT,
+            WRAP_CONTENT
+        )
 
-        ballParam.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
-        ballParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
+        ballParam.addRule(CENTER_HORIZONTAL, TRUE)
+        ballParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
         relativeLayout?.addView(ballCircleView, ballParam)
 
         val relParam = RelativeLayout.LayoutParams(calWidth, calHeight)
