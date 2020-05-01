@@ -25,10 +25,10 @@ class AllianceLoader : LinearLayout, LoaderContract {
 
     var distanceMultiplier: Int = 4
         set(value) {
-            if (value < 1) {
-                field = 1
+            field = if (value < 1) {
+                1
             } else {
-                field = value
+                value
             }
         }
 

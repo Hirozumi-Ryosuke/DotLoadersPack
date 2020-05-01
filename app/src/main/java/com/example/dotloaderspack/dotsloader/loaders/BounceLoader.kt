@@ -9,6 +9,7 @@ import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -16,10 +17,10 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 class BounceLoader : LinearLayout, LoaderContract {
 
     var ballRadius: Int = 60
-    var ballColor: Int = ContextCompat.getColor(context, android.R.color.holo_red_dark)
+    var ballColor: Int = getColor(context, android.R.color.holo_red_dark)
 
     var showShadow: Boolean = true
-    var shadowColor: Int = ContextCompat.getColor(context, android.R.color.black)
+    var shadowColor: Int = getColor(context, android.R.color.black)
 
     var animDuration: Int = 1500
         set(value) {
@@ -31,15 +32,15 @@ class BounceLoader : LinearLayout, LoaderContract {
     private var ballCircleView: CircleView? = null
     private var ballShadowView: CircleView? = null
 
-    private var calWidth: Int = 0
-    private var calHeight: Int = 0
+    private var calWidth = 0
+    private var calHeight = 0
 
-    private val STATE_GOINGDOWN: Int = 0
-    private val STATE_SQUEEZING: Int = 1
-    private val STATE_RESIZING: Int = 2
-    private val STATE_COMINGUP: Int = 3
+    private val STATE_GOINGDOWN = 0
+    private val STATE_SQUEEZING = 1
+    private val STATE_RESIZING = 2
+    private val STATE_COMINGUP = 3
 
-    private var state: Int = STATE_GOINGDOWN
+    private var state = STATE_GOINGDOWN
 
     constructor(context: Context?) : super(context) {
         initView()
@@ -68,10 +69,12 @@ class BounceLoader : LinearLayout, LoaderContract {
         this.ballRadius = typedArray.getDimensionPixelSize(R.styleable.BounceLoader_bounce_ballRadius, 60)
         this.ballColor = typedArray.getColor(
             R.styleable.BounceLoader_bounce_ballColor,
-            ContextCompat.getColor(context, android.R.color.holo_red_dark))
+            getColor(context, android.R.color.holo_red_dark)
+        )
 
         this.shadowColor = typedArray.getColor(R.styleable.BounceLoader_bounce_shadowColor,
-            ContextCompat.getColor(context, android.R.color.black))
+            getColor(context, android.R.color.black)
+        )
 
         this.showShadow = typedArray.getBoolean(R.styleable.BounceLoader_bounce_showShadow, true)
         this.animDuration = typedArray.getInt(R.styleable.BounceLoader_bounce_animDuration, 1500)

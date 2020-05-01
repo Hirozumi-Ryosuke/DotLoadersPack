@@ -6,6 +6,7 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 
 abstract class AbstractLinearLayout : LinearLayout, LoaderContract {
@@ -18,7 +19,7 @@ abstract class AbstractLinearLayout : LinearLayout, LoaderContract {
 
     var dotsDist = 15
 
-    var dotsColor = ContextCompat.getColor(context, R.color.loader_defalut)
+    var dotsColor = getColor(context, R.color.loader_defalut)
 
     abstract fun initView()
 

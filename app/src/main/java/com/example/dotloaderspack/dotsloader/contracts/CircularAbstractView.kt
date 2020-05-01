@@ -12,9 +12,9 @@ open class CircularAbstractView : DotsLoaderBaseView {
 
     lateinit var dotsYCorArr: FloatArray
 
-    var bigCircleRadius: Int = 60
+    var bigCircleRadius = 60
 
-    var useMultipleColors: Boolean = false
+    var useMultipleColors = false
     var dotsColorsArray = IntArray(8) { ContextCompat.getColor(context, android.R.color.darker_gray) }
 
     constructor(context: Context) : super(context)
