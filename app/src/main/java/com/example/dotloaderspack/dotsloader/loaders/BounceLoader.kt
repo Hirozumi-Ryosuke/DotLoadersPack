@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup.LayoutParams.*
 import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -16,13 +17,13 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class BounceLoader : LinearLayout, LoaderContract {
 
-    var ballRadius: Int = 60
-    var ballColor: Int = getColor(context, android.R.color.holo_red_dark)
+    var ballRadius = 60
+    var ballColor = getColor(context, android.R.color.holo_red_dark)
 
-    var showShadow: Boolean = true
-    var shadowColor: Int = getColor(context, android.R.color.black)
+    var showShadow = true
+    var shadowColor = getColor(context, android.R.color.black)
 
-    var animDuration: Int = 1500
+    var animDuration = 1500
         set(value) {
             field = if (value <= 0) 1000 else value
         }
@@ -66,18 +67,18 @@ class BounceLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BounceLoader, 0, 0)
 
-        this.ballRadius = typedArray.getDimensionPixelSize(R.styleable.BounceLoader_bounce_ballRadius, 60)
-        this.ballColor = typedArray.getColor(
+        ballRadius = typedArray.getDimensionPixelSize(R.styleable.BounceLoader_bounce_ballRadius, 60)
+        ballColor = typedArray.getColor(
             R.styleable.BounceLoader_bounce_ballColor,
             getColor(context, android.R.color.holo_red_dark)
         )
 
-        this.shadowColor = typedArray.getColor(R.styleable.BounceLoader_bounce_shadowColor,
+        shadowColor = typedArray.getColor(R.styleable.BounceLoader_bounce_shadowColor,
             getColor(context, android.R.color.black)
         )
 
-        this.showShadow = typedArray.getBoolean(R.styleable.BounceLoader_bounce_showShadow, true)
-        this.animDuration = typedArray.getInt(R.styleable.BounceLoader_bounce_animDuration, 1500)
+        showShadow = typedArray.getBoolean(R.styleable.BounceLoader_bounce_showShadow, true)
+        animDuration = typedArray.getInt(R.styleable.BounceLoader_bounce_animDuration, 1500)
 
         typedArray.recycle()
     }
@@ -133,12 +134,12 @@ class BounceLoader : LinearLayout, LoaderContract {
 
         ballParam.addRule(CENTER_HORIZONTAL, TRUE)
         ballParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
-        relativeLayout?.addView(ballCircleView, ballParam)
+        relativeLayout?.addView(ballCircleView)
 
         val relParam = RelativeLayout.LayoutParams(calWidth, calHeight)
         this.addView(relativeLayout, relParam)
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
                 this@BounceLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
