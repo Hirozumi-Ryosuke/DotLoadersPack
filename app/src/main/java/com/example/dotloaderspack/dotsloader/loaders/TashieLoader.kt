@@ -7,7 +7,10 @@ import android.view.ViewTreeObserver.*
 import android.view.animation.*
 import android.view.animation.Animation.*
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.AbstractLinearLayout
 
@@ -46,21 +49,21 @@ class TashieLoader : AbstractLinearLayout {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, TashieLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.TashieLoader_tashieloader_dotsColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+        this.dotsRadius = typedArray.getDimensionPixelSize(TashieLoader_tashieloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(TashieLoader_tashieloader_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(TashieLoader_tashieloader_dotsColor, getColor(context, loader_selected))
 
-        this.animDuration = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDur, 500)
+        this.animDuration = typedArray.getInt(TashieLoader_tashieloader_animDur, 500)
 
         this.interpolator = AnimationUtils.loadInterpolator(context,
-            typedArray.getResourceId(R.styleable.TashieLoader_tashieloader_interpolator,
+            typedArray.getResourceId(
+                TashieLoader_tashieloader_interpolator,
                 android.R.anim.linear_interpolator)) as AnticipateOvershootInterpolator
 
-        this.noOfDots = typedArray.getInt(R.styleable.TashieLoader_tashieloader_noOfDots, 8)
-        this.animDelay = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDelay, 100)
+        this.noOfDots = typedArray.getInt(TashieLoader_tashieloader_noOfDots, 8)
+        this.animDelay = typedArray.getInt(TashieLoader_tashieloader_animDelay, 100)
 
         typedArray.recycle()
     }
