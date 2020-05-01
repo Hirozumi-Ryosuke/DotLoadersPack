@@ -18,29 +18,25 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 class AllianceLoader : LinearLayout, LoaderContract {
 
 
-    var dotsRadius: Int = 50
-    var strokeWidth: Int = 0
+    var dotsRadius = 50
+    var strokeWidth = 0
 
-    var drawOnlyStroke: Boolean = false
+    var drawOnlyStroke = false
 
-    var distanceMultiplier: Int = 4
+    var distanceMultiplier = 4
         set(value) {
-            field = if (value < 1) {
-                1
-            } else {
-                value
-            }
+            field = if (value < 1) 1 else value
         }
 
-    private var firsDotColor: Int = getColor(context, android.R.color.holo_red_dark)
-    private var secondDotColor: Int = getColor(context, android.R.color.holo_green_dark)
-    private var thirdDotColor: Int = getColor(context, R.color.loader_selected)
+    private var firsDotColor = getColor(context, android.R.color.holo_red_dark)
+    private var secondDotColor = getColor(context, android.R.color.holo_green_dark)
+    private var thirdDotColor = getColor(context, R.color.loader_selected)
 
-    var animDuration: Int = 500
+    var animDuration = 500
 
-    private var step: Int = 0
+    private var step = 0
 
-    private var calWidthHeight: Int = 0
+    private var calWidthHeight = 0
     private lateinit var firstCircle: CircleView
     private lateinit var secondCircle: CircleView
     private lateinit var thirdCircle: CircleView
