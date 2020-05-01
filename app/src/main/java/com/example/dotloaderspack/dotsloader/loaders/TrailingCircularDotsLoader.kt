@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.Gravity.*
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.view.animation.Animation.*
@@ -12,6 +13,8 @@ import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.*
+import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -21,7 +24,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     var dotsRadius = 50
     var bigCircleRadius = 200
 
-    var circleColor = getColor(context, R.color.loader_selected)
+    var circleColor = getColor(context, loader_selected)
     var noOfTrailingDots = 6
 
     var animDuration = 2000
@@ -65,7 +68,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
 
         this.circleColor = typedArray.getColor(
             TrailingCircularDotsLoader_trailingcircular_dotsColor,
-            getColor(context, R.color.loader_selected)
+            getColor(context, loader_selected)
         )
 
         this.noOfTrailingDots = typedArray.getInt(
@@ -82,8 +85,8 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        if (calWidthHeight == 0) {
-            calWidthHeight = (2 * bigCircleRadius) + (2 * dotsRadius)
+        when (calWidthHeight) {
+            0 -> calWidthHeight = (2 * bigCircleRadius) + (2 * dotsRadius)
         }
 
         setMeasuredDimension(calWidthHeight, calWidthHeight)
@@ -93,10 +96,10 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        this.gravity = CENTER_HORIZONTAL
 
         relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
+        relativeLayout.gravity = CENTER_HORIZONTAL
 
 
         if (calWidthHeight == 0) {
