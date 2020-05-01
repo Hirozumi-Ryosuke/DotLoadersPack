@@ -36,8 +36,7 @@ class SlidingLoader : ThreeDotsBaseView {
         firstDotColor: Int,
         secondDotColor: Int,
         thirdDotColor: Int
-    )
-            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor) {
+    ) : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor) {
         initView()
     }
 
@@ -59,15 +58,15 @@ class SlidingLoader : ThreeDotsBaseView {
 
         val typedArray = context.obtainStyledAttributes(attrs, SlidingLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(
+        dotsRadius = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsRadius, 30)
+        dotsDist = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsDist, 15)
+        firstDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_firstDotColor,
             ContextCompat.getColor(context, loader_selected))
-        this.secondDotColor = typedArray.getColor(
+        secondDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_secondDotColor,
             ContextCompat.getColor(context, loader_selected))
-        this.thirdDotColor = typedArray.getColor(
+        thirdDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_thirdDotColor,
             ContextCompat.getColor(context, loader_selected))
 
