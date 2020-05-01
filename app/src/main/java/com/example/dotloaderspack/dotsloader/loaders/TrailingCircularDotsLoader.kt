@@ -15,16 +15,16 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
 
-    var dotsRadius: Int = 50
-    var bigCircleRadius: Int = 200
+    var dotsRadius = 50
+    var bigCircleRadius = 200
 
-    var circleColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
-    var noOfTrailingDots: Int = 6
+    var circleColor = ContextCompat.getColor(context, R.color.loader_selected)
+    var noOfTrailingDots = 6
 
-    var animDuration: Int = 2000
-    var animDelay: Int = animDuration / 10
+    var animDuration = 2000
+    var animDelay = animDuration / 10
 
-    private var calWidthHeight: Int = 0
+    private var calWidthHeight = 0
     private lateinit var mainCircle: CircleView
     private lateinit var relativeLayout: RelativeLayout
     private lateinit var trailingCirclesArray: Array<CircleView?>
