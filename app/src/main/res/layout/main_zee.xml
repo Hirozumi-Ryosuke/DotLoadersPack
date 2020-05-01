@@ -17,7 +17,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        <com.example.dotloaderspack.dotsloader.loaders.ZeeLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -27,7 +27,7 @@
             app:zee_firstDotsColor="@color/red"
             app:zee_secondDotsColor="@color/red_default" />
 
-        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        <com.example.dotloaderspack.dotsloader.loaders.ZeeLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -38,7 +38,7 @@
             app:zee_secondDotsColor="@color/amber_default" />
 
 
-        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        <com.example.dotloaderspack.dotsloader.loaders.ZeeLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -50,7 +50,7 @@
 
     </LinearLayout>
 
-    <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+    <com.example.dotloaderspack.dotsloader.loaders.ZeeLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -60,7 +60,7 @@
         app:zee_firstDotsColor="@color/blue_selected"
         app:zee_secondDotsColor="@color/blue_delfault" />
 
-    <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+    <com.example.dotloaderspack.dotsloader.loaders.ZeeLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

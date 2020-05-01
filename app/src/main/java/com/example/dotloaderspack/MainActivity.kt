@@ -2,6 +2,7 @@ package com.example.dotloaderspack
 
 import android.os.Bundle
 import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -20,19 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         containerLL = findViewById(R.id.container)
 
-        //initLinearDotsLoader()
-        //initCircularDotsLoader()
-        //initLazyLoader()
-        //initTashieLoader()
-        //initSlidongLoader()
-        //initRotatingCircularDotsLoader()
+        initLinearDotsLoader()
+        initCircularDotsLoader()
+        initLazyLoader()
+        initTashieLoader()
+        initSlidongLoader()
+        initRotatingCircularDotsLoader()
 
-        //initTrailingCirculerDotsLoader()
+        initTrailingCirculerDotsLoader()
 
-        //initZeeLoader()
+        initZeeLoader()
 
-        //initAllianceLoader()
-        //initLightsLoader()
+        initAllianceLoader()
+        initLightsLoader()
     }
 
     private fun initLightsLoader() {
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTrailingCirculerDotsLoader() {
-        var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+        val trailingCircularDotsLoader = TrailingCircularDotsLoader(
             this,
             24,
             ContextCompat.getColor(this, android.R.color.holo_green_light),
@@ -103,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSlidongLoader() {
-        var sliding = SlidingLoader(this, 20, 5,
+        val sliding = SlidingLoader(this, 20, 5,
             ContextCompat.getColor(this, R.color.red),
             ContextCompat.getColor(this, R.color.yellow),
             ContextCompat.getColor(this, R.color.green)).apply {
@@ -115,7 +116,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTashieLoader() {
-        var tashie = TashieLoader(
+        val tashie = TashieLoader(
             this, 5,
             30, 10,
             ContextCompat.getColor(this, R.color.green))
@@ -128,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 15, 5,
+        val lazyLoader = LazyLoader(this, 15, 5,
             ContextCompat.getColor(this, R.color.loader_selected),
             ContextCompat.getColor(this, R.color.loader_selected),
             ContextCompat.getColor(this, R.color.loader_selected))
@@ -151,7 +152,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initCircularDotsLoader() {
-        var cirLoader = CircularDotsLoader(this@MainActivity)
+        val cirLoader = CircularDotsLoader(this@MainActivity)
         cirLoader.setPadding(20, 20, 20, 20)
         cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
         cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
@@ -176,9 +177,9 @@ class MainActivity : AppCompatActivity() {
         loader.radius = 40
         loader.dotsDistance = 20
         loader.animDur = 1000
-        //loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        //loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-        //loader.showRunningShadow = false
+        loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        loader.showRunningShadow = false
         containerLL.addView(loader)
 
 

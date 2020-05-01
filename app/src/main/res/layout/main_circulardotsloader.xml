@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        <com.example.dotloaderspack.dotsloader.loaders.CircularDotsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:loader_animDur="100"
@@ -27,7 +27,7 @@
             app:loader_selectedColor="@color/red"
             app:loader_showRunningShadow="true" />
 
-        <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        <com.example.dotloaderspack.dotsloader.loaders.CircularDotsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -41,7 +41,7 @@
             app:loader_selectedColor="#FFC200"
             app:loader_showRunningShadow="true" />
 
-        <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        <com.example.dotloaderspack.dotsloader.loaders.CircularDotsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:loader_animDur="100"
@@ -55,7 +55,7 @@
 
     </LinearLayout>
 
-    <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.CircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -69,7 +69,7 @@
         app:loader_showRunningShadow="true" />
 
 
-    <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.CircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

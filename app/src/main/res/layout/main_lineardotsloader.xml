@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:context="com.example.dotloaderspack.MainActivity">
 
-    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -24,7 +24,7 @@
         app:loader_selectedRadius="16dp"
         app:loader_showRunningShadow="false" />
 
-    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -36,7 +36,7 @@
         app:loader_noOfDots="8"
         app:loader_selectedRadius="16dp" />
 
-    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -51,7 +51,7 @@
         app:loader_selectedColor="@color/pink_selected"
         app:loader_selectedRadius="16dp" />
 
-    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -63,7 +63,7 @@
         app:loader_showRunningShadow="false"
         app:loader_selectedColor="@color/blue_selected" />
 
-    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+    <com.example.dotloaderspack.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

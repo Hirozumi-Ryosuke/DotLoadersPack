@@ -2,11 +2,12 @@ package com.example.dotloaderspack.dotsloader.utils
 
 import android.graphics.Color
 import java.util.*
+import kotlin.math.roundToInt
 
 object Helper {
 
     fun adjustAlpha(color: Int, factor: Float): Int {
-        val alpha = Math.round(Color.alpha(color) * factor)
+        val alpha = (Color.alpha(color) * factor).roundToInt()
         val red = Color.red(color)
         val green = Color.green(color)
         val blue = Color.blue(color)

@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        <com.example.dotloaderspack.dotsloader.loaders.PullInLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -23,7 +23,7 @@
             app:pullin_dotsColor="@color/red"
             app:pullin_dotsRadius="6dp"/>
 
-        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        <com.example.dotloaderspack.dotsloader.loaders.PullInLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -32,7 +32,7 @@
             app:pullin_dotsColor="@color/amber"
             app:pullin_dotsRadius="6dp"/>
 
-        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        <com.example.dotloaderspack.dotsloader.loaders.PullInLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -43,7 +43,7 @@
 
     </LinearLayout>
 
-    <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+    <com.example.dotloaderspack.dotsloader.loaders.PullInLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -54,7 +54,7 @@
         app:pullin_useMultipleColors="true"
         app:pullin_colorsArray="@array/vibgyorg"/>
 
-    <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+    <com.example.dotloaderspack.dotsloader.loaders.PullInLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

@@ -80,18 +80,39 @@ class CircularDotsLoader : CircularAbstractView {
 
         for (i in 0 until noOfDots) {
 
-            if (i + 1 == selectedDotPos) {
-                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(),
-                    selectedCirclePaint!!
-                )
-            } else if (this.showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), firstShadowPaint)
-            } else if (this.showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), secondShadowPaint)
-            } else {
-                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(),
-                    defaultCirclePaint!!
-                )
+            when {
+                i + 1 == selectedDotPos -> {
+                    canvas.drawCircle(
+                        dotsXCorArr[i],
+                        dotsYCorArr[i],
+                        radius.toFloat(),
+                        selectedCirclePaint!!
+                    )
+                }
+                this.showRunningShadow && i + 1 == firstShadowPos -> {
+                    canvas.drawCircle(
+                        dotsXCorArr[i],
+                        dotsYCorArr[i],
+                        radius.toFloat(),
+                        firstShadowPaint
+                    )
+                }
+                this.showRunningShadow && i + 1 == secondShadowPos -> {
+                    canvas.drawCircle(
+                        dotsXCorArr[i],
+                        dotsYCorArr[i],
+                        radius.toFloat(),
+                        secondShadowPaint
+                    )
+                }
+                else -> {
+                    canvas.drawCircle(
+                        dotsXCorArr[i],
+                        dotsYCorArr[i],
+                        radius.toFloat(),
+                        defaultCirclePaint!!
+                    )
+                }
             }
 
         }

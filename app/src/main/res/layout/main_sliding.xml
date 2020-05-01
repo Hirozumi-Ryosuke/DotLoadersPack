@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:context="com.example.dotloaderspack.MainActivity">
 
-    <com.agrawalsuneet.dotsloader.loaders.SlidingLoader
+    <com.example.dotloaderspack.dotsloader.loaders.SlidingLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"

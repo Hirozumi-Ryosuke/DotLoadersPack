@@ -16,7 +16,7 @@
         android:layout_margin="8dp"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.BounceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.BounceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -25,7 +25,7 @@
             app:bounce_ballRadius="16dp"
             app:bounce_showShadow="false" />
 
-        <com.agrawalsuneet.dotsloader.loaders.BounceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.BounceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -34,7 +34,7 @@
             app:bounce_ballRadius="16dp"
             app:bounce_showShadow="false" />
 
-        <com.agrawalsuneet.dotsloader.loaders.BounceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.BounceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -46,7 +46,7 @@
 
     </LinearLayout>
 
-    <com.agrawalsuneet.dotsloader.loaders.BounceLoader
+    <com.example.dotloaderspack.dotsloader.loaders.BounceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
@@ -57,7 +57,7 @@
         app:bounce_showShadow="true" />
 
 
-    <com.agrawalsuneet.dotsloader.loaders.BounceLoader
+    <com.example.dotloaderspack.dotsloader.loaders.BounceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"

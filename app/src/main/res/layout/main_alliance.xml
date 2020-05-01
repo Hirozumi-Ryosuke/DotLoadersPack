@@ -16,7 +16,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.AllianceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -28,7 +28,7 @@
             app:alliance_thirdDotsColor="@color/red" />
 
 
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.AllianceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -40,7 +40,7 @@
             app:alliance_thirdDotsColor="@color/amber" />
 
 
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.example.dotloaderspack.dotsloader.loaders.AllianceLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -54,7 +54,7 @@
     </LinearLayout>
 
 
-    <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+    <com.example.dotloaderspack.dotsloader.loaders.AllianceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -68,7 +68,7 @@
         app:alliance_thirdDotsColor="@color/green" />
 
 
-    <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+    <com.example.dotloaderspack.dotsloader.loaders.AllianceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

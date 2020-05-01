@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.example.dotloaderspack.MainActivity">
 
-    <com.agrawalsuneet.dotsloader.loaders.TashieLoader
+    <com.example.dotloaderspack.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -21,7 +21,7 @@
         app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="10" />
 
-    <com.agrawalsuneet.dotsloader.loaders.TashieLoader
+    <com.example.dotloaderspack.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -33,7 +33,7 @@
         app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="8" />
 
-    <com.agrawalsuneet.dotsloader.loaders.TashieLoader
+    <com.example.dotloaderspack.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -45,7 +45,7 @@
         app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="8" />
 
-    <com.agrawalsuneet.dotsloader.loaders.TashieLoader
+    <com.example.dotloaderspack.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -57,7 +57,7 @@
         app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="8" />
 
-    <com.agrawalsuneet.dotsloader.loaders.TashieLoader
+    <com.example.dotloaderspack.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
