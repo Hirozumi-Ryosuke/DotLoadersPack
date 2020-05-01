@@ -13,10 +13,10 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class PullInLoader : LinearLayout, LoaderContract {
 
-    var dotsRadius: Int = 30
-    private var bigCircleRadius: Int = 90
+    var dotsRadius = 30
+    private var bigCircleRadius = 90
 
-    private var useMultipleColors: Boolean = false
+    private var useMultipleColors = false
 
     var dotsColor: Int = ContextCompat.getColor(context, android.R.color.darker_gray)
     var dotsColorsArray = IntArray(8) { ContextCompat.getColor(context, android.R.color.darker_gray) }
@@ -26,23 +26,6 @@ class PullInLoader : LinearLayout, LoaderContract {
     private lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
     constructor(context: Context?) : super(context) {
-        initView()
-    }
-
-    constructor(context: Context, dotsRadius: Int, bigCircleRadius: Int, dotsColor: Int) : super(context) {
-        this.dotsRadius = dotsRadius
-        this.bigCircleRadius = bigCircleRadius
-        this.dotsColor = dotsColor
-        this.useMultipleColors = false
-        initView()
-    }
-
-
-    constructor(context: Context, dotsRadius: Int, bigCircleRadius: Int, dotsColorsArray: IntArray) : super(context) {
-        this.dotsRadius = dotsRadius
-        this.bigCircleRadius = bigCircleRadius
-        this.dotsColorsArray = dotsColorsArray
-        this.useMultipleColors = true
         initView()
     }
 
