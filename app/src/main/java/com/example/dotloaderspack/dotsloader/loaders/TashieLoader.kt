@@ -138,33 +138,23 @@ class TashieLoader : AbstractLinearLayout {
         return anim
     }
 
-    private fun setAnimationListener(anim: AnimationSet, dotPosition: Int) {
-        if (dotPosition == noOfDots - 1) {
-            anim.setAnimationListener(object : AnimationListener {
-                override fun onAnimationRepeat(p0: Animation?) {
-                }
+    private fun setAnimationListener(anim: AnimationSet, dotPosition: Int) =
+        when (dotPosition) {
+            noOfDots - 1 -> anim.setAnimationListener(object : AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) = Unit
 
-                override fun onAnimationEnd(p0: Animation?) {
-                    startLoading()
-                }
+                override fun onAnimationEnd(p0: Animation?) = startLoading()
 
-                override fun onAnimationStart(p0: Animation?) {
-                }
-
+                override fun onAnimationStart(p0: Animation?) = Unit
             })
-        } else {
-            anim.setAnimationListener(object : AnimationListener {
-                override fun onAnimationRepeat(p0: Animation?) {
-                }
+            else -> anim.setAnimationListener(object : AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) = Unit
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    if (!isDotsExpanding) {
-                        dotsArray[dotPosition]!!.visibility = View.VISIBLE
+                    when {
+                        !isDotsExpanding -> dotsArray[dotPosition]!!.visibility = View.VISIBLE
+                        isDotsExpanding -> dotsArray[dotPosition]!!.visibility = View.INVISIBLE
                     }
-                    else if (isDotsExpanding) {
-                        dotsArray[dotPosition]!!.visibility = View.INVISIBLE
-                    }
-
                 }
 
                 override fun onAnimationStart(p0: Animation?) {
@@ -172,5 +162,4 @@ class TashieLoader : AbstractLinearLayout {
 
             })
         }
-    }
 }
