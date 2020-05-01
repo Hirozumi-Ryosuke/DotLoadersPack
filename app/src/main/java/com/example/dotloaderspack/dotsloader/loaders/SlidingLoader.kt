@@ -8,6 +8,7 @@ import android.view.animation.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
 
@@ -22,7 +23,7 @@ class SlidingLoader : ThreeDotsBaseView {
 
     override var interpolator = AnticipateOvershootInterpolator()
 
-    var distanceToMove: Int = 12
+    var distanceToMove = 12
 
     var firstDelayDuration = 0
     var secondDelayDuration = 0
@@ -55,21 +56,24 @@ class SlidingLoader : ThreeDotsBaseView {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, SlidingLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_firstDotColor,
+        this.dotsRadius = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsDist, 15)
+        this.firstDotColor = typedArray.getColor(
+            SlidingLoader_slidingloader_firstDotColor,
             ContextCompat.getColor(context, R.color.loader_selected))
-        this.secondDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_secondDotColor,
+        this.secondDotColor = typedArray.getColor(
+            SlidingLoader_slidingloader_secondDotColor,
             ContextCompat.getColor(context, R.color.loader_selected))
-        this.thirdDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_thirdDotColor,
+        this.thirdDotColor = typedArray.getColor(
+            SlidingLoader_slidingloader_thirdDotColor,
             ContextCompat.getColor(context, R.color.loader_selected))
 
 
-        this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
+        this.animDuration = typedArray.getInt(SlidingLoader_slidingloader_animDur, 500)
 
-        this.distanceToMove = typedArray.getInteger(R.styleable.SlidingLoader_slidingloader_distanceToMove, 12)
+        this.distanceToMove = typedArray.getInteger(SlidingLoader_slidingloader_distanceToMove, 12)
 
         typedArray.recycle()
     }
@@ -152,16 +156,10 @@ class SlidingLoader : ThreeDotsBaseView {
 
 
     private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
-        val transAnim = TranslateAnimation(
-            when {
-                isForwardDir -> 0f
-                else -> (distanceToMove * dotsRadius).toFloat()
-            },
-            when {
-                isForwardDir -> (distanceToMove * dotsRadius).toFloat()
-                else -> 0f
-            },
-            0f, 0f)
+        val transAnim = TranslateAnimation(if (isForwardDir) 0f
+            else (distanceToMove * dotsRadius).toFloat(),
+            if (isForwardDir) (distanceToMove * dotsRadius).toFloat()
+            else 0f, 0f, 0f)
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.interpolator = interpolator
