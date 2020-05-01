@@ -12,13 +12,15 @@ import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     var dotsRadius: Int = 30
-    var dotsColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
+    var dotsColor: Int = ContextCompat.getColor(context, loader_selected)
     var bigCircleRadius: Int = 90
 
     var animDuration: Int = 5000
@@ -50,16 +52,19 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RotatingCircularDotsLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, RotatingCircularDotsLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
+        this.dotsRadius = typedArray.getDimensionPixelSize(
+            RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
 
-        this.dotsColor = typedArray.getColor(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+        this.dotsColor = typedArray.getColor(
+            RotatingCircularDotsLoader_rotatingcircular_dotsColor,
+            ContextCompat.getColor(context, loader_selected))
 
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
+        this.bigCircleRadius = typedArray.getDimensionPixelSize(
+            RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
 
-        this.animDuration = typedArray.getInt(R.styleable.RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
+        this.animDuration = typedArray.getInt(RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
 
         typedArray.recycle()
     }
