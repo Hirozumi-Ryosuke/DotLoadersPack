@@ -5,6 +5,8 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.styleable
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.CircularAbstractView
 import com.example.dotloaderspack.dotsloader.utils.Utils
 import java.util.*
@@ -36,9 +38,9 @@ class CircularDotsLoader : CircularAbstractView {
     override fun initAttributes(attrs: AttributeSet) {
         super.initAttributes(attrs)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularDotsLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, CircularDotsLoader, 0, 0)
 
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60)
+        this.bigCircleRadius = typedArray.getDimensionPixelSize(CircularDotsLoader_loader_bigCircleRadius, 60)
 
         typedArray.recycle()
     }

@@ -1,14 +1,22 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
+import android.R.anim.*
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.Gravity.*
 import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.*
 import android.view.animation.*
+import android.view.animation.AnimationUtils.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.*
+import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
 
@@ -39,25 +47,33 @@ class LazyLoader : ThreeDotsBaseView {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, LazyLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_firstDotColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
-        this.secondDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_secondDotColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
-        this.thirdDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_thirdDotColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+        this.dotsRadius = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsDist, 15)
+        this.firstDotColor = typedArray.getColor(
+            LazyLoader_lazyloader_firstDotColor,
+            getColor(context, loader_selected)
+        )
+        this.secondDotColor = typedArray.getColor(
+            LazyLoader_lazyloader_secondDotColor,
+            getColor(context, loader_selected)
+        )
+        this.thirdDotColor = typedArray.getColor(
+            LazyLoader_lazyloader_thirdDotColor,
+            getColor(context, loader_selected)
+        )
 
-        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
+        this.animDuration = typedArray.getInt(LazyLoader_lazyloader_animDur, 500)
 
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-            typedArray.getResourceId(R.styleable.LazyLoader_lazyloader_interpolator,
-                android.R.anim.linear_interpolator)) as AnticipateOvershootInterpolator
+        this.interpolator = loadInterpolator(context,
+            typedArray.getResourceId(
+                LazyLoader_lazyloader_interpolator,
+                linear_interpolator
+            )) as AnticipateOvershootInterpolator
 
-        this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
-        this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
+        this.firstDelayDuration = typedArray.getInt(LazyLoader_lazyloader_firstDelayDur, 100)
+        this.secondDelayDuration = typedArray.getInt(LazyLoader_lazyloader_secondDelayDur, 200)
 
         typedArray.recycle()
     }
@@ -79,10 +95,10 @@ class LazyLoader : ThreeDotsBaseView {
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
         thirdCircle = CircleView(context, dotsRadius, thirdDotColor)
 
-        val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        val params = LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         params.leftMargin = dotsDist
 
-        setVerticalGravity(Gravity.BOTTOM)
+        setVerticalGravity(BOTTOM)
 
         addView(firstCircle)
         addView(secondCircle, params)
@@ -91,7 +107,7 @@ class LazyLoader : ThreeDotsBaseView {
 
         val loaderView = this
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 

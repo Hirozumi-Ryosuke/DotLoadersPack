@@ -4,8 +4,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
-import com.example.dotloaderspack.R
-import com.example.dotloaderspack.R.styleable
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.DotsLoaderBaseView
 import com.example.dotloaderspack.dotsloader.utils.Utils

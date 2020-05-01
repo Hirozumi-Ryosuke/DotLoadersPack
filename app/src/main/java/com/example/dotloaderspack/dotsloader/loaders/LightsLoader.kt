@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.ViewTreeObserver.*
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.view.animation.Animation.*
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams.*
 import androidx.core.content.ContextCompat.*
@@ -143,8 +144,8 @@ class LightsLoader : LinearLayout, LoaderContract {
         return AlphaAnimation(fromAplha, toAplha)
             .apply {
                 duration = (100..1000).random().toLong()
-                repeatMode = Animation.REVERSE
-                repeatCount = Animation.INFINITE
+                repeatMode = REVERSE
+                repeatCount = INFINITE
             }
     }
 }
