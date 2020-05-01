@@ -4,7 +4,6 @@ import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
@@ -220,12 +219,9 @@ class AllianceLoader : LinearLayout, LoaderContract {
                 startLoading()
             }
 
-            override fun onAnimationRepeat(p0: Animation?) {
-            }
+            override fun onAnimationRepeat(p0: Animation?) = Unit
 
-            override fun onAnimationStart(p0: Animation?) {
-            }
-
+            override fun onAnimationStart(p0: Animation?) = Unit
         })
 
         thirdCircle.startAnimation(thirdCircleAnim)
