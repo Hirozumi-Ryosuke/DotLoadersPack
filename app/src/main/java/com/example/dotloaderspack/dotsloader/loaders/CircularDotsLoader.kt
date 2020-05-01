@@ -49,10 +49,9 @@ class CircularDotsLoader : CircularAbstractView {
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
 
-        if (visibility != VISIBLE) {
-            timer?.cancel()
-        } else if (shouldAnimate) {
-            scheduleTimer()
+        when {
+            visibility != VISIBLE -> timer?.cancel()
+            shouldAnimate -> scheduleTimer()
         }
     }
 
@@ -62,11 +61,9 @@ class CircularDotsLoader : CircularAbstractView {
             override fun run() {
                 selectedDotPos++
 
-                if (selectedDotPos > noOfDots) {
-                    selectedDotPos = 1
-                }
+                if (selectedDotPos > noOfDots) selectedDotPos = 1
 
-                (Utils.scanForActivity(context))?.runOnUiThread { invalidate() }
+                Utils.scanForActivity(context)?.runOnUiThread { invalidate() }
             }
         }, 0, animDur.toLong())
     }
