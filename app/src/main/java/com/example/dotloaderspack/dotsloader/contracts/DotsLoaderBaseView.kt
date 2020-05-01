@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.utils.Helper
 
 abstract class DotsLoaderBaseView : View, LoaderContract {
@@ -37,21 +38,19 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotsLoaderBaseView, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, DotsLoaderBaseView, 0, 0)
 
-        this.defaultColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_defaultColor,
-            ContextCompat.getColor(context, R.color.loader_defalut))
-        this.selectedColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_selectedColor,
-            ContextCompat.getColor(context, R.color.loader_defalut))
+        this.defaultColor = typedArray.getColor(DotsLoaderBaseView_loader_defaultColor, ContextCompat.getColor(context, R.color.loader_defalut))
+        this.selectedColor = typedArray.getColor(DotsLoaderBaseView_loader_selectedColor, ContextCompat.getColor(context, R.color.loader_defalut))
 
-        this.radius = typedArray.getDimensionPixelSize(R.styleable.DotsLoaderBaseView_loader_circleRadius, 30)
+        this.radius = typedArray.getDimensionPixelSize(DotsLoaderBaseView_loader_circleRadius, 30)
 
-        this.animDur = typedArray.getInt(R.styleable.DotsLoaderBaseView_loader_animDur, 500)
+        this.animDur = typedArray.getInt(DotsLoaderBaseView_loader_animDur, 500)
 
-        this.showRunningShadow = typedArray.getBoolean(R.styleable.DotsLoaderBaseView_loader_showRunningShadow, true)
+        this.showRunningShadow = typedArray.getBoolean(DotsLoaderBaseView_loader_showRunningShadow, true)
 
-        this.firstShadowColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_firstShadowColor, 0)
-        this.secondShadowColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_secondShadowColor, 0)
+        this.firstShadowColor = typedArray.getColor(DotsLoaderBaseView_loader_firstShadowColor, 0)
+        this.secondShadowColor = typedArray.getColor(DotsLoaderBaseView_loader_secondShadowColor, 0)
 
         typedArray.recycle()
     }
