@@ -10,9 +10,8 @@ import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.RelativeLayout.*
-import androidx.core.content.ContextCompat
+import android.widget.RelativeLayout.LayoutParams.*
 import androidx.core.content.ContextCompat.*
-import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
@@ -104,14 +103,14 @@ class ZeeLoader : LinearLayout, LoaderContract {
         }
 
         firstCircle = CircleView(context, dotsRadius, firsDotColor)
-        val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        val firstParam = RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         firstParam.addRule(ALIGN_PARENT_TOP, TRUE)
         firstParam.addRule(ALIGN_PARENT_LEFT, TRUE)
 
         relativeLayout.addView(firstCircle, firstParam)
 
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
-        val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+        val secondParam = RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         secondParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
         secondParam.addRule(ALIGN_PARENT_RIGHT, TRUE)
 
@@ -212,8 +211,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
             }
         }
 
-        val transAnim = TranslateAnimation(fromXPos, toXPos,
-            fromYPos, toYPos)
+        val transAnim = TranslateAnimation(fromXPos, toXPos, fromYPos, toYPos)
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.interpolator = AccelerateDecelerateInterpolator()
