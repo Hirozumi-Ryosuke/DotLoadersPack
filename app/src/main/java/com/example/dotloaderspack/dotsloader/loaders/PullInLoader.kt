@@ -16,16 +16,16 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 class PullInLoader : LinearLayout, LoaderContract {
 
     var dotsRadius = 30
-    private var bigCircleRadius = 90
+    var bigCircleRadius = 90
 
-    private var useMultipleColors = false
+    var useMultipleColors = false
 
     var dotsColor = getColor(context, darker_gray)
     var dotsColorsArray = IntArray(8) { getColor(context, darker_gray) }
 
     var animDuration = 3000
 
-    private lateinit var circularLoaderBaseView: CircularLoaderBaseView
+    lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
     constructor(context: Context?) : super(context) {
         initView()
