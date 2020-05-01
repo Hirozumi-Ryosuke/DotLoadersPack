@@ -1,5 +1,6 @@
 package com.example.dotloaderspack
 
+import android.R.color.*
 import android.os.Bundle
 import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.LinearLayout
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         val trailingCircularDotsLoader = TrailingCircularDotsLoader(
             this,
             24,
-            getColor(this, android.R.color.holo_green_light),
+            getColor(this, holo_green_light),
             100,
             5)
             .apply {
@@ -123,8 +124,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initTashieLoader() {
         val tashie = TashieLoader(
-            this, 5,
-            30, 10,
+            this,
+            5,
+            30,
+            10,
             getColor(this, green)
         )
             .apply {
