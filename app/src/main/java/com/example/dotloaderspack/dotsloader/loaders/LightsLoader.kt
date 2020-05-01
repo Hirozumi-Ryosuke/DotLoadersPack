@@ -6,6 +6,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -21,7 +22,7 @@ class LightsLoader : LinearLayout, LoaderContract {
     var circleRadius: Int = 30
     var circleDistance: Int = 10
 
-    var circleColor: Int = resources.getColor(android.R.color.holo_purple)
+    var circleColor: Int = ContextCompat.getColor(context, android.R.color.holo_purple)
 
     private var calWidthHeight: Int = 0
 
@@ -60,7 +61,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         circleDistance = typedArray.getDimensionPixelSize(R.styleable.LightsLoader_lights_circleDistance, 10)
 
         circleColor = typedArray.getColor(R.styleable.LightsLoader_lights_circleColor,
-            resources.getColor(android.R.color.holo_purple))
+            ContextCompat.getColor(context, android.R.color.holo_purple))
 
         typedArray.recycle()
     }

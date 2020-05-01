@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.AbstractLinearLayout
@@ -51,7 +52,7 @@ class TashieLoader : AbstractLinearLayout {
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
         this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
         this.dotsColor = typedArray.getColor(R.styleable.TashieLoader_tashieloader_dotsColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.animDuration = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDur, 500)
 
@@ -83,7 +84,7 @@ class TashieLoader : AbstractLinearLayout {
         for (iCount in 0 until noOfDots) {
             val circle = CircleView(context, dotsRadius, dotsColor)
 
-            val params = LinearLayout.LayoutParams(2 * dotsRadius, 2 * dotsRadius)
+            val params = LayoutParams(2 * dotsRadius, 2 * dotsRadius)
 
             if (iCount != noOfDots - 1) {
                 params.rightMargin = dotsDist

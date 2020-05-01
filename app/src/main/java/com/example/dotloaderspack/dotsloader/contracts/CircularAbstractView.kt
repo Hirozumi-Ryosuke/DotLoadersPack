@@ -3,6 +3,7 @@ package com.example.dotloaderspack.dotsloader.contracts
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 
 open class CircularAbstractView : DotsLoaderBaseView {
 
@@ -14,7 +15,7 @@ open class CircularAbstractView : DotsLoaderBaseView {
     var bigCircleRadius: Int = 60
 
     var useMultipleColors: Boolean = false
-    var dotsColorsArray = IntArray(8) { resources.getColor(android.R.color.darker_gray) }
+    var dotsColorsArray = IntArray(8) { ContextCompat.getColor(context, android.R.color.darker_gray) }
 
     constructor(context: Context) : super(context)
 

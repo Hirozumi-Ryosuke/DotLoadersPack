@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
@@ -43,11 +44,11 @@ class LazyLoader : ThreeDotsBaseView {
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
         this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
         this.firstDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_firstDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
         this.secondDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_secondDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
         this.thirdDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_thirdDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
 

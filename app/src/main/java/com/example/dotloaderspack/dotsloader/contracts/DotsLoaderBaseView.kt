@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.utils.Helper
 
@@ -39,9 +40,9 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotsLoaderBaseView, 0, 0)
 
         this.defaultColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_defaultColor,
-            resources.getColor(R.color.loader_defalut))
+            ContextCompat.getColor(context, R.color.loader_defalut))
         this.selectedColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_selectedColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_defalut))
 
         this.radius = typedArray.getDimensionPixelSize(R.styleable.DotsLoaderBaseView_loader_circleRadius, 30)
 
@@ -101,13 +102,13 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         invalidate()
     }
 
-    var defaultColor: Int = resources.getColor(android.R.color.darker_gray)
+    var defaultColor: Int = ContextCompat.getColor(context, android.R.color.darker_gray)
         set(defaultColor) {
             field = defaultColor
             defaultCirclePaint?.color = defaultColor
         }
 
-    open var selectedColor: Int = resources.getColor(R.color.loader_selected)
+    open var selectedColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
         set(selectedColor) {
             field = selectedColor
             selectedCirclePaint?.let {

@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -26,8 +27,8 @@ class ZeeLoader : LinearLayout, LoaderContract {
             }
         }
 
-    var firsDotColor: Int = resources.getColor(R.color.loader_selected)
-    var secondDotColor: Int = resources.getColor(R.color.loader_selected)
+    private var firsDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
+    private var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
 
     var animDuration: Int = 500
 
@@ -69,10 +70,10 @@ class ZeeLoader : LinearLayout, LoaderContract {
         this.distanceMultiplier = typedArray.getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
 
         this.firsDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.secondDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.animDuration = typedArray.getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
 

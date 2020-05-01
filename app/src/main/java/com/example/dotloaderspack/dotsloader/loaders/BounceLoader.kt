@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -15,10 +16,10 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 class BounceLoader : LinearLayout, LoaderContract {
 
     var ballRadius: Int = 60
-    var ballColor: Int = resources.getColor(android.R.color.holo_red_dark)
+    var ballColor: Int = ContextCompat.getColor(context, android.R.color.holo_red_dark)
 
     var showShadow: Boolean = true
-    var shadowColor: Int = resources.getColor(android.R.color.black)
+    var shadowColor: Int = ContextCompat.getColor(context, android.R.color.black)
 
     var animDuration: Int = 1500
         set(value) {
@@ -67,10 +68,10 @@ class BounceLoader : LinearLayout, LoaderContract {
         this.ballRadius = typedArray.getDimensionPixelSize(R.styleable.BounceLoader_bounce_ballRadius, 60)
         this.ballColor = typedArray.getColor(
             R.styleable.BounceLoader_bounce_ballColor,
-            resources.getColor(android.R.color.holo_red_dark))
+            ContextCompat.getColor(context, android.R.color.holo_red_dark))
 
         this.shadowColor = typedArray.getColor(R.styleable.BounceLoader_bounce_shadowColor,
-            resources.getColor(android.R.color.black))
+            ContextCompat.getColor(context, android.R.color.black))
 
         this.showShadow = typedArray.getBoolean(R.styleable.BounceLoader_bounce_showShadow, true)
         this.animDuration = typedArray.getInt(R.styleable.BounceLoader_bounce_animDuration, 1500)

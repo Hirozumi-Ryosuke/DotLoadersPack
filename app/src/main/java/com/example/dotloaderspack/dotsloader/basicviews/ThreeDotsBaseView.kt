@@ -2,16 +2,17 @@ package com.example.dotloaderspack.dotsloader.basicviews
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.contracts.AbstractLinearLayout
 
 abstract class ThreeDotsBaseView : AbstractLinearLayout {
 
-    var firstDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var firstDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var secondDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var thirdDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var thirdDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
     protected lateinit var firstCircle: CircleView
     protected lateinit var secondCircle: CircleView

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
@@ -60,11 +61,11 @@ class SlidingLoader : ThreeDotsBaseView {
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
         this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
         this.firstDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_firstDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
         this.secondDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_secondDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
         this.thirdDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_thirdDotColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
 
         this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)

@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -15,7 +16,7 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     var dotsRadius: Int = 30
-    var dotsColor: Int = resources.getColor(R.color.loader_selected)
+    var dotsColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
     var bigCircleRadius: Int = 90
 
     var animDuration: Int = 5000
@@ -52,7 +53,7 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
 
         this.dotsColor = typedArray.getColor(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
 

@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -17,7 +18,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     var dotsRadius: Int = 50
     var bigCircleRadius: Int = 200
 
-    var circleColor: Int = resources.getColor(R.color.loader_selected)
+    var circleColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
     var noOfTrailingDots: Int = 6
 
     var animDuration: Int = 2000
@@ -58,7 +59,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_bigCircleRadius, 200)
 
         this.circleColor = typedArray.getColor(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsColor,
-            resources.getColor(R.color.loader_selected))
+            ContextCompat.getColor(context, R.color.loader_selected))
 
         this.noOfTrailingDots = typedArray.getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_noOfTrailingDots, 6)
 
