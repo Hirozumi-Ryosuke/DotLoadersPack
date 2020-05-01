@@ -10,8 +10,9 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.RelativeLayout.*
+import android.widget.RelativeLayout.LayoutParams.*
 import androidx.core.content.ContextCompat.*
-import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
@@ -122,23 +123,23 @@ class AllianceLoader : LinearLayout, LoaderContract {
         }
 
         firstCircle = CircleView(context, dotsRadius, firsDotColor, drawOnlyStroke, strokeWidth)
-        val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        firstParam.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
-        firstParam.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE)
+        val firstParam = RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        firstParam.addRule(ALIGN_PARENT_TOP, TRUE)
+        firstParam.addRule(CENTER_HORIZONTAL, TRUE)
 
         relativeLayout.addView(firstCircle, firstParam)
 
         secondCircle = CircleView(context, dotsRadius, secondDotColor, drawOnlyStroke, strokeWidth)
-        val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
+        val secondParam = RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        secondParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
+        secondParam.addRule(ALIGN_PARENT_RIGHT, TRUE)
 
         relativeLayout.addView(secondCircle, secondParam)
 
         thirdCircle = CircleView(context, dotsRadius, thirdDotColor, drawOnlyStroke, strokeWidth)
-        val thirdParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        thirdParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-        thirdParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
+        val thirdParam = RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        thirdParam.addRule(ALIGN_PARENT_BOTTOM, TRUE)
+        thirdParam.addRule(ALIGN_PARENT_LEFT, TRUE)
 
         relativeLayout.addView(thirdCircle, thirdParam)
 
