@@ -1,6 +1,5 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
-import android.R.color
 import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
@@ -24,7 +22,7 @@ class PullInLoader : LinearLayout, LoaderContract {
     var dotsColor = getColor(context, darker_gray)
     var dotsColorsArray = IntArray(8) { getColor(context, darker_gray) }
 
-    var animDuration: Int = 3000
+    var animDuration = 3000
 
     private lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
