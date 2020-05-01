@@ -2,7 +2,6 @@ package com.example.dotloaderspack.dotsloader.loaders
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.ViewTreeObserver.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
@@ -92,10 +91,10 @@ class ZeeLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        this.gravity = CENTER_HORIZONTAL
 
         relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
+        relativeLayout.gravity = CENTER_HORIZONTAL
 
 
         if (calWidthHeight == 0) {
@@ -145,11 +144,9 @@ class ZeeLoader : LinearLayout, LoaderContract {
                 startLoading()
             }
 
-            override fun onAnimationRepeat(p0: Animation?) {
-            }
+            override fun onAnimationRepeat(p0: Animation?) = Unit
 
-            override fun onAnimationStart(p0: Animation?) {
-            }
+            override fun onAnimationStart(p0: Animation?) = Unit
 
         })
 

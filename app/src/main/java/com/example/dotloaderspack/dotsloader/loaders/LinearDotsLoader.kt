@@ -6,18 +6,17 @@ import android.util.AttributeSet
 import android.view.View
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.DotsLoaderBaseView
-import com.example.dotloaderspack.dotsloader.utils.Utils
 import com.example.dotloaderspack.dotsloader.utils.Utils.scanForActivity
 import java.util.*
 
 class LinearDotsLoader : DotsLoaderBaseView {
 
-    private var timer: Timer? = null
+    var timer: Timer? = null
 
     var isSingleDir = true
 
-    private var diffRadius = 0
-    private var isFwdDir = true
+    var diffRadius = 0
+    var isFwdDir = true
 
     constructor(context: Context) : super(context) {
         initCordinates()
@@ -44,22 +43,22 @@ class LinearDotsLoader : DotsLoaderBaseView {
 
         val typedArray = context.obtainStyledAttributes(attrs, LinearDotsLoader, 0, 0)
 
-        this.noOfDots = typedArray.getInt(LinearDotsLoader_loader_noOfDots, 3)
+        noOfDots = typedArray.getInt(LinearDotsLoader_loader_noOfDots, 3)
 
-        this.selRadius = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_selectedRadius, radius + 10)
+        selRadius = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_selectedRadius, radius + 10)
 
-        this.dotsDistance = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_dotsDist, 15)
+        dotsDistance = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_dotsDist, 15)
 
-        this.isSingleDir = typedArray.getBoolean(LinearDotsLoader_loader_isSingleDir, false)
-        this.expandOnSelect = typedArray.getBoolean(LinearDotsLoader_loader_expandOnSelect, false)
+        isSingleDir = typedArray.getBoolean(LinearDotsLoader_loader_isSingleDir, false)
+        expandOnSelect = typedArray.getBoolean(LinearDotsLoader_loader_expandOnSelect, false)
 
         typedArray.recycle()
     }
 
     override fun initCordinates() {
-        diffRadius = this.selRadius - radius
+        diffRadius = selRadius - radius
 
-        dotsXCorArr = FloatArray(this.noOfDots)
+        dotsXCorArr = FloatArray(noOfDots)
 
         //init X cordinates for all dots
         for (i in 0 until noOfDots) {
@@ -76,7 +75,8 @@ class LinearDotsLoader : DotsLoaderBaseView {
         if (expandOnSelect) {
             calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance + 2 * diffRadius)
             calHeight = 2 * this.selRadius
-        } else {
+        }
+        else {
             calHeight = 2 * radius
             calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance)
         }
@@ -153,26 +153,26 @@ class LinearDotsLoader : DotsLoaderBaseView {
             if (i + 1 == selectedDotPos) {
                 canvas.drawCircle(
                     xCor,
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                    (if (expandOnSelect) selRadius else radius).toFloat(),
+                    (if (expandOnSelect) selRadius else radius).toFloat(),
                     selectedCirclePaint!!
                 )
             } else if (showRunningShadow && i + 1 == firstShadowPos) {
                 canvas.drawCircle(
                     xCor,
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                    (if (expandOnSelect) selRadius else radius).toFloat(),
                     radius.toFloat(),
                     firstShadowPaint)
             } else if (showRunningShadow && i + 1 == secondShadowPos) {
                 canvas.drawCircle(
                     xCor,
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                    (if (expandOnSelect) selRadius else radius).toFloat(),
                     radius.toFloat(),
                     secondShadowPaint)
             } else {
                 canvas.drawCircle(
                     xCor,
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                    (if (expandOnSelect) selRadius else radius).toFloat(),
                     radius.toFloat(),
                     defaultCirclePaint!!
                 )
@@ -181,28 +181,27 @@ class LinearDotsLoader : DotsLoaderBaseView {
         }
     }
 
-    var dotsDistance: Int = 15
+    var dotsDistance = 15
         set(value) {
             field = value
             initCordinates()
         }
 
-    var noOfDots: Int = 3
+    var noOfDots = 3
         set(noOfDots) {
             field = noOfDots
             initCordinates()
         }
 
-    var selRadius: Int = 38
+    var selRadius = 38
         set(selRadius) {
             field = selRadius
             initCordinates()
         }
 
-    var expandOnSelect: Boolean = false
+    var expandOnSelect = false
         set(expandOnSelect) {
             field = expandOnSelect
             initCordinates()
         }
-
 }

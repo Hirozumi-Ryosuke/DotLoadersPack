@@ -3,7 +3,7 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.R.anim.*
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
+import android.view.Gravity.*
 import android.view.ViewTreeObserver.*
 import android.view.animation.*
 import android.view.animation.Animation.*
@@ -79,7 +79,7 @@ class TashieLoader : AbstractLinearLayout {
     override fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
-        setVerticalGravity(Gravity.BOTTOM)
+        setVerticalGravity(BOTTOM)
 
         dotsArray = arrayOfNulls<CircleView?>(noOfDots)
         for (iCount in 0 until noOfDots) {

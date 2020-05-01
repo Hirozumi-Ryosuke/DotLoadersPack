@@ -7,6 +7,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
@@ -62,13 +63,16 @@ class SlidingLoader : ThreeDotsBaseView {
         dotsDist = typedArray.getDimensionPixelSize(SlidingLoader_slidingloader_dotsDist, 15)
         firstDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_firstDotColor,
-            ContextCompat.getColor(context, loader_selected))
+            getColor(context, loader_selected)
+        )
         secondDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_secondDotColor,
-            ContextCompat.getColor(context, loader_selected))
+            getColor(context, loader_selected)
+        )
         thirdDotColor = typedArray.getColor(
             SlidingLoader_slidingloader_thirdDotColor,
-            ContextCompat.getColor(context, loader_selected))
+            getColor(context, loader_selected)
+        )
 
 
         this.animDuration = typedArray.getInt(SlidingLoader_slidingloader_animDur, 500)
@@ -109,7 +113,6 @@ class SlidingLoader : ThreeDotsBaseView {
         addView(secondCircle, paramsSecondCircle)
         addView(thirdCircle, paramsThirdCircle)
 
-
         val loaderView = this
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -120,7 +123,6 @@ class SlidingLoader : ThreeDotsBaseView {
                 vto.removeOnGlobalLayoutListener(this)
             }
         })
-
     }
 
     private fun startLoading(isForwardDir: Boolean) {
@@ -138,7 +140,10 @@ class SlidingLoader : ThreeDotsBaseView {
         val trans3Anim = getTranslateAnim(isForwardDir)
 
         Handler().postDelayed({
-            if (isForwardDir) firstCircle.startAnimation(trans3Anim) else thirdCircle.startAnimation(trans3Anim)
+            when {
+                isForwardDir -> firstCircle.startAnimation(trans3Anim)
+                else -> thirdCircle.startAnimation(trans3Anim)
+            }
         }, secondDelayDuration.toLong())
 
         trans3Anim.setAnimationListener(object : Animation.AnimationListener {
@@ -157,10 +162,17 @@ class SlidingLoader : ThreeDotsBaseView {
 
     private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
         val transAnim = TranslateAnimation(
-            if (isForwardDir) 0f
-            else (distanceToMove * dotsRadius).toFloat(),
-            if (isForwardDir) (distanceToMove * dotsRadius).toFloat()
-            else 0f, 0f, 0f)
+            when {
+                isForwardDir -> 0f
+                else -> (distanceToMove * dotsRadius).toFloat()
+            },
+            when {
+                isForwardDir -> (distanceToMove * dotsRadius).toFloat()
+                else -> 0f
+            },
+            0f,
+            0f
+        )
 
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true

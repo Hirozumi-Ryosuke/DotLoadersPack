@@ -156,9 +156,6 @@ class AllianceLoader : LinearLayout, LoaderContract {
 
         initInitialValues()
 
-
-
-
         viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()

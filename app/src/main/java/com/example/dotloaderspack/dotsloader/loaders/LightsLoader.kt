@@ -94,9 +94,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         for (countI in 0 until noOfCircles) {
             val linearLayout = LinearLayout(context)
             linearLayout.orientation = HORIZONTAL
-            val params = LayoutParams(
-                WRAP_CONTENT, WRAP_CONTENT
-            )
+            val params = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
 
             if (countI != 0) {
                 params.topMargin = circleDistance
@@ -107,11 +105,11 @@ class LightsLoader : LinearLayout, LoaderContract {
             for (countJ in 0 until noOfCircles) {
                 val circleView = CircleView(context, circleRadius, circleColor)
 
-                val innerParam = LayoutParams(
-                    WRAP_CONTENT, WRAP_CONTENT
-                )
+                val innerParam = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
 
-                if (countJ != 0) innerParam.leftMargin = circleDistance
+                if (countJ != 0) {
+                    innerParam.leftMargin = circleDistance
+                }
 
                 linearLayout.addView(circleView, innerParam)
                 circlesList.add(circleView)

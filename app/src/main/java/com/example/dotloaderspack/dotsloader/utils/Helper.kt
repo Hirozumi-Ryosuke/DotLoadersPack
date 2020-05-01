@@ -16,7 +16,7 @@ object Helper {
 }
 
 fun ClosedFloatingPointRange<Float>.random() =
-    (Random().nextFloat() * (endInclusive - start)) + start
+    Random().nextFloat() * (endInclusive - start) + start
 
 fun ClosedRange<Int>.random() =
-    Random().nextInt((endInclusive + 1) - start) + start
+    Random().nextInt(endInclusive + 1 - start) + start

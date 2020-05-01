@@ -4,18 +4,12 @@ import android.R.anim.*
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.Gravity.*
-import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.*
 import android.view.animation.*
 import android.view.animation.Animation.*
 import android.view.animation.AnimationUtils.*
-import android.widget.LinearLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
-import com.example.dotloaderspack.R
-import com.example.dotloaderspack.R.*
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
@@ -23,8 +17,8 @@ import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
 
 class LazyLoader : ThreeDotsBaseView {
 
-    var firstDelayDuration: Int = 100
-    var secondDelayDuration: Int = 200
+    var firstDelayDuration = 100
+    var secondDelayDuration = 200
 
     constructor(
         context: Context,
@@ -62,31 +56,29 @@ class LazyLoader : ThreeDotsBaseView {
 
         val typedArray = context.obtainStyledAttributes(attrs, LazyLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(
+        dotsRadius = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsRadius, 30)
+        dotsDist = typedArray.getDimensionPixelSize(LazyLoader_lazyloader_dotsDist, 15)
+        firstDotColor = typedArray.getColor(
             LazyLoader_lazyloader_firstDotColor,
             getColor(context, loader_selected)
         )
-        this.secondDotColor = typedArray.getColor(
+        secondDotColor = typedArray.getColor(
             LazyLoader_lazyloader_secondDotColor,
             getColor(context, loader_selected)
         )
-        this.thirdDotColor = typedArray.getColor(
+        thirdDotColor = typedArray.getColor(
             LazyLoader_lazyloader_thirdDotColor,
             getColor(context, loader_selected)
         )
 
-        this.animDuration = typedArray.getInt(LazyLoader_lazyloader_animDur, 500)
+        animDuration = typedArray.getInt(LazyLoader_lazyloader_animDur, 500)
 
-        this.interpolator = loadInterpolator(context,
-            typedArray.getResourceId(
-                LazyLoader_lazyloader_interpolator,
-                linear_interpolator
-            )) as AnticipateOvershootInterpolator
+        interpolator = loadInterpolator(context,
+            typedArray.getResourceId(LazyLoader_lazyloader_interpolator, linear_interpolator)
+        ) as AnticipateOvershootInterpolator
 
-        this.firstDelayDuration = typedArray.getInt(LazyLoader_lazyloader_firstDelayDur, 100)
-        this.secondDelayDuration = typedArray.getInt(LazyLoader_lazyloader_secondDelayDur, 200)
+        firstDelayDuration = typedArray.getInt(LazyLoader_lazyloader_firstDelayDur, 100)
+        secondDelayDuration = typedArray.getInt(LazyLoader_lazyloader_secondDelayDur, 200)
 
         typedArray.recycle()
     }
@@ -117,14 +109,11 @@ class LazyLoader : ThreeDotsBaseView {
         addView(secondCircle, params)
         addView(thirdCircle, params)
 
-
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
+                val vto = viewTreeObserver
                 vto.removeOnGlobalLayoutListener(this)
             }
         })
@@ -145,20 +134,17 @@ class LazyLoader : ThreeDotsBaseView {
 
         val trans3Anim = getTranslateAnim()
 
-        Handler().postDelayed({
-            thirdCircle.startAnimation(trans3Anim)
-        }, secondDelayDuration.toLong())
+        Handler().postDelayed(
+            { thirdCircle.startAnimation(trans3Anim) },
+            secondDelayDuration.toLong()
+        )
 
         trans3Anim.setAnimationListener(object : AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
+            override fun onAnimationRepeat(animation: Animation?) = Unit
 
-            override fun onAnimationEnd(animation: Animation?) {
-                startLoading()
-            }
+            override fun onAnimationEnd(animation: Animation?) = startLoading()
 
-            override fun onAnimationStart(animation: Animation) {
-            }
+            override fun onAnimationStart(animation: Animation) = Unit
         })
     }
 

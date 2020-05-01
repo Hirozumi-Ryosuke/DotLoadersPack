@@ -25,7 +25,6 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
-
     constructor(context: Context?) : super(context) {
         initView()
     }
@@ -90,7 +89,6 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
                 this@RotatingCircularDotsLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
-
     }
 
     override fun onVisibilityChanged(changedView: View, visibility: Int) {

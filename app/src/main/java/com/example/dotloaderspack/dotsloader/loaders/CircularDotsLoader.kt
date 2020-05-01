@@ -41,7 +41,7 @@ class CircularDotsLoader : CircularAbstractView {
 
         val typedArray = context.obtainStyledAttributes(attrs, CircularDotsLoader, 0, 0)
 
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(CircularDotsLoader_loader_bigCircleRadius, 60)
+        bigCircleRadius = typedArray.getDimensionPixelSize(CircularDotsLoader_loader_bigCircleRadius, 60)
 
         typedArray.recycle()
     }
@@ -89,7 +89,7 @@ class CircularDotsLoader : CircularAbstractView {
                         selectedCirclePaint!!
                     )
                 }
-                this.showRunningShadow && i + 1 == firstShadowPos -> {
+                showRunningShadow && i + 1 == firstShadowPos -> {
                     canvas.drawCircle(
                         dotsXCorArr[i],
                         dotsYCorArr[i],
@@ -97,7 +97,7 @@ class CircularDotsLoader : CircularAbstractView {
                         firstShadowPaint
                     )
                 }
-                this.showRunningShadow && i + 1 == secondShadowPos -> {
+                showRunningShadow && i + 1 == secondShadowPos -> {
                     canvas.drawCircle(
                         dotsXCorArr[i],
                         dotsYCorArr[i],

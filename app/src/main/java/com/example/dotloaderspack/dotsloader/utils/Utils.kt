@@ -13,7 +13,5 @@ object Utils {
             is ContextWrapper -> scanForActivity(context.baseContext)
             else -> null
         }
-
     }
-
 }

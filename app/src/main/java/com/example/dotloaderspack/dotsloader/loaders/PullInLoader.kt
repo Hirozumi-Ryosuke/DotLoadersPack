@@ -9,7 +9,7 @@ import android.view.animation.*
 import android.view.animation.Animation.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat.*
-import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
@@ -43,27 +43,27 @@ class PullInLoader : LinearLayout, LoaderContract {
 
     override fun initAttributes(attrs: AttributeSet) {
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PullInLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, PullInLoader, 0, 0)
 
-        dotsRadius = typedArray.getDimensionPixelSize(R.styleable.PullInLoader_pullin_dotsRadius, 30)
+        dotsRadius = typedArray.getDimensionPixelSize(PullInLoader_pullin_dotsRadius, 30)
 
-        useMultipleColors = typedArray.getBoolean(R.styleable.PullInLoader_pullin_useMultipleColors, false)
+        useMultipleColors = typedArray.getBoolean(PullInLoader_pullin_useMultipleColors, false)
 
         if (useMultipleColors) {
-            val dotsArrayId = typedArray.getResourceId(R.styleable.PullInLoader_pullin_colorsArray, 0)
+            val dotsArrayId = typedArray.getResourceId(PullInLoader_pullin_colorsArray, 0)
 
             dotsColorsArray = validateColorsArray(dotsArrayId, getColor(context, darker_gray))
 
         } else {
-            dotsColor = typedArray.getColor(R.styleable.PullInLoader_pullin_dotsColor,
+            dotsColor = typedArray.getColor(
+                PullInLoader_pullin_dotsColor,
                 getColor(context, darker_gray)
             )
         }
 
-        bigCircleRadius =
-            typedArray.getDimensionPixelSize(R.styleable.PullInLoader_pullin_bigCircleRadius, 90)
+        bigCircleRadius = typedArray.getDimensionPixelSize(PullInLoader_pullin_bigCircleRadius, 90)
 
-        animDuration = typedArray.getInt(R.styleable.PullInLoader_pullin_animDur, 2000)
+        animDuration = typedArray.getInt(PullInLoader_pullin_animDur, 2000)
 
         typedArray.recycle()
     }
@@ -71,12 +71,11 @@ class PullInLoader : LinearLayout, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val calWidthHeight = 2 * this.bigCircleRadius + 2 * dotsRadius
+        val calWidthHeight = 2 * bigCircleRadius + 2 * dotsRadius
         setMeasuredDimension(calWidthHeight, calWidthHeight)
     }
 
     private fun validateColorsArray(arrayId: Int, color: Int): IntArray {
-
 
         return if (arrayId != 0) {
             val colors = IntArray(8)
@@ -149,7 +148,6 @@ class PullInLoader : LinearLayout, LoaderContract {
 
             override fun onAnimationStart(animation: Animation?) {
             }
-
         })
     }
 
@@ -184,7 +182,6 @@ class PullInLoader : LinearLayout, LoaderContract {
         scaleAnimation.repeatCount = 1
         scaleAnimation.repeatMode = REVERSE
 
-
         val alphaAnimation = AlphaAnimation(1.0f, 0.0f)
         alphaAnimation.repeatCount = 1
         alphaAnimation.repeatMode = REVERSE
@@ -198,8 +195,5 @@ class PullInLoader : LinearLayout, LoaderContract {
         animSet.interpolator = AccelerateInterpolator()
 
         return animSet
-
     }
-
-
 }
