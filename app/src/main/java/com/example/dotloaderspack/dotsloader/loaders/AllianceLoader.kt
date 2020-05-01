@@ -80,20 +80,11 @@ class AllianceLoader : LinearLayout, LoaderContract {
 
         this.distanceMultiplier = typedArray.getInteger(AllianceLoader_alliance_distanceMultiplier, 4)
 
-        this.firsDotColor = typedArray.getColor(
-            AllianceLoader_alliance_firstDotsColor,
-            getColor(context, loader_selected)
-        )
+        this.firsDotColor = typedArray.getColor(AllianceLoader_alliance_firstDotsColor, getColor(context, loader_selected))
 
-        this.secondDotColor = typedArray.getColor(
-            AllianceLoader_alliance_secondDotsColor,
-            getColor(context, loader_selected)
-        )
+        this.secondDotColor = typedArray.getColor(AllianceLoader_alliance_secondDotsColor, getColor(context, loader_selected))
 
-        this.thirdDotColor = typedArray.getColor(
-            AllianceLoader_alliance_thirdDotsColor,
-            getColor(context, loader_selected)
-        )
+        this.thirdDotColor = typedArray.getColor(AllianceLoader_alliance_thirdDotsColor, getColor(context, loader_selected))
 
         this.drawOnlyStroke = typedArray.getBoolean(AllianceLoader_alliance_drawOnlyStroke, false)
 
