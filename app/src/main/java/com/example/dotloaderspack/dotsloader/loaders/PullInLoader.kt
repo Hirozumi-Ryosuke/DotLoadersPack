@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.*
+import android.view.animation.Animation.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
@@ -138,7 +139,7 @@ class PullInLoader : LinearLayout, LoaderContract {
     }
 
     private fun Animation.setListener(onEnd: () -> Unit) {
-        this.setAnimationListener(object : Animation.AnimationListener {
+        this.setAnimationListener(object : AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
             }
 
@@ -154,9 +155,14 @@ class PullInLoader : LinearLayout, LoaderContract {
 
     private fun getRotateAnimation(): RotateAnimation {
 
-        val transAnim = RotateAnimation(0f, 360f,
-            Animation.RELATIVE_TO_SELF, 0.5f,
-            Animation.RELATIVE_TO_SELF, 0.5f)
+        val transAnim = RotateAnimation(
+            0f,
+            360f,
+            RELATIVE_TO_SELF,
+            0.5f,
+            RELATIVE_TO_SELF,
+            0.5f
+        )
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.repeatCount = 0
@@ -166,24 +172,28 @@ class PullInLoader : LinearLayout, LoaderContract {
     }
 
     private fun getScaleAnimation(): AnimationSet {
-        val scaleAnimation = ScaleAnimation(1.0f, 0.5f,
-            1.0f, 0.5f,
+        val scaleAnimation = ScaleAnimation(
+            1.0f,
+            0.5f,
+            1.0f,
+            0.5f,
             (circularLoaderBaseView.width / 2).toFloat(),
-            (circularLoaderBaseView.height / 2).toFloat())
+            (circularLoaderBaseView.height / 2).toFloat()
+        )
 
         scaleAnimation.repeatCount = 1
-        scaleAnimation.repeatMode = Animation.REVERSE
+        scaleAnimation.repeatMode = REVERSE
 
 
         val alphaAnimation = AlphaAnimation(1.0f, 0.0f)
         alphaAnimation.repeatCount = 1
-        alphaAnimation.repeatMode = Animation.REVERSE
+        alphaAnimation.repeatMode = REVERSE
 
         val animSet = AnimationSet(true)
         animSet.addAnimation(scaleAnimation)
         animSet.addAnimation(alphaAnimation)
         animSet.repeatCount = 1
-        animSet.repeatMode = Animation.REVERSE
+        animSet.repeatMode = REVERSE
         animSet.duration = if (animDuration > 0) (animDuration / 8).toLong() else 100
         animSet.interpolator = AccelerateInterpolator()
 
