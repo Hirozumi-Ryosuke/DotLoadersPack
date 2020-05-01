@@ -21,19 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         containerLL = findViewById(R.id.container)
 
-        initLinearDotsLoader()
+        //initLinearDotsLoader()
         initCircularDotsLoader()
-        initLazyLoader()
-        initTashieLoader()
-        initSlidongLoader()
-        initRotatingCircularDotsLoader()
+        //initLazyLoader()
+        //initTashieLoader()
+        //initSlidongLoader()
+        //initRotatingCircularDotsLoader()
 
-        initTrailingCirculerDotsLoader()
+        //initTrailingCirculerDotsLoader()
 
-        initZeeLoader()
+        //initZeeLoader()
 
-        initAllianceLoader()
-        initLightsLoader()
+        //initAllianceLoader()
+        //initLightsLoader()
     }
 
     private fun initLightsLoader() {

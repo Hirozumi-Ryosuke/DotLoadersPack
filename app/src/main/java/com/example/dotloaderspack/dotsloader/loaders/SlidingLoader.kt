@@ -13,29 +13,28 @@ import com.example.dotloaderspack.dotsloader.basicviews.ThreeDotsBaseView
 
 class SlidingLoader : ThreeDotsBaseView {
 
-    override var animDuration: Int = 500
+    override var animDuration = 500
         set(value) {
             field = value
             firstDelayDuration = value / 10
             secondDelayDuration = value / 5
         }
 
-    override var interpolator: AnticipateOvershootInterpolator = AnticipateOvershootInterpolator()
-        set(value) {
-            field = AnticipateOvershootInterpolator()
-        }
+    override var interpolator = AnticipateOvershootInterpolator()
 
     var distanceToMove: Int = 12
-        set(value) {
-            field = value
-            invalidate()
-        }
 
-    private var firstDelayDuration: Int = 0
-    private var secondDelayDuration: Int = 0
+    var firstDelayDuration = 0
+    var secondDelayDuration = 0
 
-    constructor(context: Context, dotsRadius: Int, dotsDist: Int,
-                firstDotColor: Int, secondDotColor: Int, thirdDotColor: Int)
+    constructor(
+        context: Context,
+        dotsRadius: Int,
+        dotsDist: Int,
+        firstDotColor: Int,
+        secondDotColor: Int,
+        thirdDotColor: Int
+    )
             : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor) {
         initView()
     }
@@ -92,13 +91,13 @@ class SlidingLoader : ThreeDotsBaseView {
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
         thirdCircle = CircleView(context, dotsRadius, thirdDotColor)
 
-        val paramsFirstCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        val paramsFirstCircle = LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         paramsFirstCircle.leftMargin = (2 * dotsRadius)
 
-        val paramsSecondCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        val paramsSecondCircle = LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         paramsSecondCircle.leftMargin = dotsDist
 
-        val paramsThirdCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        val paramsThirdCircle = LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         paramsThirdCircle.leftMargin = dotsDist
         paramsThirdCircle.rightMargin = (2 * dotsRadius)
 
@@ -153,8 +152,15 @@ class SlidingLoader : ThreeDotsBaseView {
 
 
     private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
-        val transAnim = TranslateAnimation(if (isForwardDir) 0f else (distanceToMove * dotsRadius).toFloat(),
-            if (isForwardDir) (distanceToMove * dotsRadius).toFloat() else 0f,
+        val transAnim = TranslateAnimation(
+            when {
+                isForwardDir -> 0f
+                else -> (distanceToMove * dotsRadius).toFloat()
+            },
+            when {
+                isForwardDir -> (distanceToMove * dotsRadius).toFloat()
+                else -> 0f
+            },
             0f, 0f)
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
