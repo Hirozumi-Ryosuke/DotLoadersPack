@@ -25,9 +25,21 @@ class LazyLoader : ThreeDotsBaseView {
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
 
-    constructor(context: Context, dotsRadius: Int, dotsDist: Int,
-                firstDotColor: Int, secondDotColor: Int, thirdDotColor: Int)
-            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor){
+    constructor(
+        context: Context,
+        dotsRadius: Int,
+        dotsDist: Int,
+        firstDotColor: Int,
+        secondDotColor: Int,
+        thirdDotColor: Int
+    ) : super(
+        context,
+        dotsRadius,
+        dotsDist,
+        firstDotColor,
+        secondDotColor,
+        thirdDotColor
+    ){
         initView()
     }
 
