@@ -7,10 +7,12 @@ import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.utils.Helper
+import com.example.dotloaderspack.dotsloader.utils.Helper.adjustAlpha
 
 abstract class DotsLoaderBaseView : View, LoaderContract {
 
@@ -43,8 +45,8 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
         val typedArray = context.obtainStyledAttributes(attrs, DotsLoaderBaseView, 0, 0)
 
-        this.defaultColor = typedArray.getColor(DotsLoaderBaseView_loader_defaultColor, ContextCompat.getColor(context, loader_defalut))
-        this.selectedColor = typedArray.getColor(DotsLoaderBaseView_loader_selectedColor, ContextCompat.getColor(context, loader_defalut))
+        this.defaultColor = typedArray.getColor(DotsLoaderBaseView_loader_defaultColor, getColor(context, loader_defalut))
+        this.selectedColor = typedArray.getColor(DotsLoaderBaseView_loader_selectedColor, getColor(context, loader_defalut))
 
         this.radius = typedArray.getDimensionPixelSize(DotsLoaderBaseView_loader_circleRadius, 30)
 
@@ -77,8 +79,8 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     fun initShadowPaints() {
         if (showRunningShadow) {
             if (!isShadowColorSet) {
-                firstShadowColor = Helper.adjustAlpha(selectedColor, 0.7f)
-                secondShadowColor = Helper.adjustAlpha(selectedColor, 0.5f)
+                firstShadowColor = adjustAlpha(selectedColor, 0.7f)
+                secondShadowColor = adjustAlpha(selectedColor, 0.5f)
                 isShadowColorSet = true
             }
 
@@ -104,13 +106,13 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         invalidate()
     }
 
-    var defaultColor: Int = ContextCompat.getColor(context, android.R.color.darker_gray)
+    var defaultColor = getColor(context, android.R.color.darker_gray)
         set(defaultColor) {
             field = defaultColor
             defaultCirclePaint?.color = defaultColor
         }
 
-    open var selectedColor: Int = ContextCompat.getColor(context, loader_defalut)
+    open var selectedColor: Int = getColor(context, loader_defalut)
         set(selectedColor) {
             field = selectedColor
             selectedCirclePaint?.let {
