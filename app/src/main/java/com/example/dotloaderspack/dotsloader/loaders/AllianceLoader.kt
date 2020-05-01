@@ -1,6 +1,5 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
-import android.R.*
 import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
@@ -11,10 +10,10 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.R.color.*
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
@@ -75,31 +74,34 @@ class AllianceLoader : LinearLayout, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AllianceLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, AllianceLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AllianceLoader_alliance_dotsRadius, 50)
+        this.dotsRadius = typedArray.getDimensionPixelSize(AllianceLoader_alliance_dotsRadius, 50)
 
-        this.distanceMultiplier = typedArray.getInteger(R.styleable.AllianceLoader_alliance_distanceMultiplier, 4)
+        this.distanceMultiplier = typedArray.getInteger(AllianceLoader_alliance_distanceMultiplier, 4)
 
-        this.firsDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_firstDotsColor,
+        this.firsDotColor = typedArray.getColor(
+            AllianceLoader_alliance_firstDotsColor,
             getColor(context, loader_selected)
         )
 
-        this.secondDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_secondDotsColor,
+        this.secondDotColor = typedArray.getColor(
+            AllianceLoader_alliance_secondDotsColor,
             getColor(context, loader_selected)
         )
 
-        this.thirdDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_thirdDotsColor,
+        this.thirdDotColor = typedArray.getColor(
+            AllianceLoader_alliance_thirdDotsColor,
             getColor(context, loader_selected)
         )
 
-        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.AllianceLoader_alliance_drawOnlyStroke, false)
+        this.drawOnlyStroke = typedArray.getBoolean(AllianceLoader_alliance_drawOnlyStroke, false)
 
         if (drawOnlyStroke) {
-            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.AllianceLoader_alliance_strokeWidth, 20)
+            this.strokeWidth = typedArray.getDimensionPixelSize(AllianceLoader_alliance_strokeWidth, 20)
         }
 
-        this.animDuration = typedArray.getInt(R.styleable.AllianceLoader_alliance_animDuration, 500)
+        this.animDuration = typedArray.getInt(AllianceLoader_alliance_animDuration, 500)
 
         typedArray.recycle()
     }
