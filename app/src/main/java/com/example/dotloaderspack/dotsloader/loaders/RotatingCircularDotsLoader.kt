@@ -23,7 +23,7 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     var animDuration = 5000
 
-    private lateinit var circularLoaderBaseView: CircularLoaderBaseView
+    lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
 
     constructor(context: Context?) : super(context) {
@@ -52,18 +52,18 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         val typedArray = context.obtainStyledAttributes(attrs, RotatingCircularDotsLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(
+        dotsRadius = typedArray.getDimensionPixelSize(
             RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
 
-        this.dotsColor = typedArray.getColor(
+        dotsColor = typedArray.getColor(
             RotatingCircularDotsLoader_rotatingcircular_dotsColor,
             getColor(context, loader_selected)
         )
 
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(
+        bigCircleRadius = typedArray.getDimensionPixelSize(
             RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
 
-        this.animDuration = typedArray.getInt(RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
+        animDuration = typedArray.getInt(RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
 
         typedArray.recycle()
     }
