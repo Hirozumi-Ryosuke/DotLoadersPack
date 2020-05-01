@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.*
 import android.view.animation.Animation
 import android.view.animation.Animation.*
 import android.view.animation.LinearInterpolator
@@ -80,7 +81,7 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         addView(circularLoaderBaseView)
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
                 this@RotatingCircularDotsLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
