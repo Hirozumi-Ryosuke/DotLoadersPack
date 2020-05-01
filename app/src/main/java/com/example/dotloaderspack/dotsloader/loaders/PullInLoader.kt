@@ -1,5 +1,7 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
+import android.R.color
+import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -18,8 +21,8 @@ class PullInLoader : LinearLayout, LoaderContract {
 
     private var useMultipleColors = false
 
-    var dotsColor: Int = ContextCompat.getColor(context, android.R.color.darker_gray)
-    var dotsColorsArray = IntArray(8) { ContextCompat.getColor(context, android.R.color.darker_gray) }
+    var dotsColor = getColor(context, darker_gray)
+    var dotsColorsArray = IntArray(8) { getColor(context, darker_gray) }
 
     var animDuration: Int = 3000
 
@@ -50,11 +53,12 @@ class PullInLoader : LinearLayout, LoaderContract {
         if (useMultipleColors) {
             val dotsArrayId = typedArray.getResourceId(R.styleable.PullInLoader_pullin_colorsArray, 0)
 
-            dotsColorsArray = validateColorsArray(dotsArrayId, ContextCompat.getColor(context, android.R.color.darker_gray))
+            dotsColorsArray = validateColorsArray(dotsArrayId, getColor(context, darker_gray))
 
         } else {
             dotsColor = typedArray.getColor(R.styleable.PullInLoader_pullin_dotsColor,
-                ContextCompat.getColor(context, android.R.color.darker_gray))
+                getColor(context, darker_gray)
+            )
         }
 
         bigCircleRadius =
