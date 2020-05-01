@@ -4,8 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.*
 import android.view.animation.*
+import android.view.animation.Animation.*
 import androidx.core.content.ContextCompat
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
@@ -93,7 +94,7 @@ class TashieLoader : AbstractLinearLayout {
             dotsArray[iCount] = circle
         }
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 this@TashieLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 startLoading()
@@ -118,12 +119,12 @@ class TashieLoader : AbstractLinearLayout {
         val scaleAnim: ScaleAnimation = when (isExpanding) {
             true -> {
                 ScaleAnimation(0f, 1f, 0f, 1f,
-                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+                    RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f)
             }
 
             false -> {
                 ScaleAnimation(1f, 0f, 1f, 0f,
-                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+                    RELATIVE_TO_SELF, 0.5f, RELATIVE_TO_SELF, 0.5f)
             }
         }
 
@@ -139,7 +140,7 @@ class TashieLoader : AbstractLinearLayout {
 
     private fun setAnimationListener(anim: AnimationSet, dotPosition: Int) {
         if (dotPosition == noOfDots - 1) {
-            anim.setAnimationListener(object : Animation.AnimationListener {
+            anim.setAnimationListener(object : AnimationListener {
                 override fun onAnimationRepeat(p0: Animation?) {
                 }
 
@@ -152,19 +153,16 @@ class TashieLoader : AbstractLinearLayout {
 
             })
         } else {
-            anim.setAnimationListener(object : Animation.AnimationListener {
+            anim.setAnimationListener(object : AnimationListener {
                 override fun onAnimationRepeat(p0: Animation?) {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    when (!isDotsExpanding) {
-                        true -> {
-                            dotsArray[dotPosition]!!.visibility = View.VISIBLE
-                        }
-
-                        false -> {
-                            dotsArray[dotPosition]!!.visibility = View.INVISIBLE
-                        }
+                    if (!isDotsExpanding) {
+                        dotsArray[dotPosition]!!.visibility = View.VISIBLE
+                    }
+                    else if (isDotsExpanding) {
+                        dotsArray[dotPosition]!!.visibility = View.INVISIBLE
                     }
 
                 }
