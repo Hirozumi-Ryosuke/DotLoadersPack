@@ -5,6 +5,8 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.styleable
+import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.DotsLoaderBaseView
 import com.example.dotloaderspack.dotsloader.utils.Utils
 import java.util.*
@@ -41,16 +43,16 @@ class LinearDotsLoader : DotsLoaderBaseView {
 
         super.initAttributes(attrs)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, LinearDotsLoader, 0, 0)
 
-        this.noOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
+        this.noOfDots = typedArray.getInt(LinearDotsLoader_loader_noOfDots, 3)
 
-        this.selRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
+        this.selRadius = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_selectedRadius, radius + 10)
 
-        this.dotsDistance = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
+        this.dotsDistance = typedArray.getDimensionPixelSize(LinearDotsLoader_loader_dotsDist, 15)
 
-        this.isSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
-        this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
+        this.isSingleDir = typedArray.getBoolean(LinearDotsLoader_loader_isSingleDir, false)
+        this.expandOnSelect = typedArray.getBoolean(LinearDotsLoader_loader_expandOnSelect, false)
 
         typedArray.recycle()
     }
