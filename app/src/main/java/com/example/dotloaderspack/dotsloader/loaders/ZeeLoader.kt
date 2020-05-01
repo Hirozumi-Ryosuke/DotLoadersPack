@@ -20,21 +20,18 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
     var distanceMultiplier: Int = 4
         set(value) {
-            if (value < 1) {
-                field = 1
-            } else {
-                field = value
-            }
+            field = if (value < 1) 1
+            else value
         }
 
-    private var firsDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
-    private var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
+    private var firsDotColor = ContextCompat.getColor(context, R.color.loader_selected)
+    private var secondDotColor = ContextCompat.getColor(context, R.color.loader_selected)
 
-    var animDuration: Int = 500
+    var animDuration = 500
 
-    private var step: Int = 0
+    private var step = 0
 
-    private var calWidthHeight: Int = 0
+    private var calWidthHeight = 0
     private lateinit var firstCircle: CircleView
     private lateinit var secondCircle: CircleView
     private lateinit var relativeLayout: RelativeLayout
