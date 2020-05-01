@@ -10,6 +10,7 @@ import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
@@ -31,9 +32,9 @@ class AllianceLoader : LinearLayout, LoaderContract {
             }
         }
 
-    var firsDotColor: Int = ContextCompat.getColor(context, android.R.color.holo_red_dark)
-    var secondDotColor: Int = ContextCompat.getColor(context, android.R.color.holo_green_dark)
-    var thirdDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
+    private var firsDotColor: Int = getColor(context, android.R.color.holo_red_dark)
+    private var secondDotColor: Int = getColor(context, android.R.color.holo_green_dark)
+    private var thirdDotColor: Int = getColor(context, R.color.loader_selected)
 
     var animDuration: Int = 500
 
@@ -82,13 +83,16 @@ class AllianceLoader : LinearLayout, LoaderContract {
         this.distanceMultiplier = typedArray.getInteger(R.styleable.AllianceLoader_alliance_distanceMultiplier, 4)
 
         this.firsDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_firstDotsColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+            getColor(context, R.color.loader_selected)
+        )
 
         this.secondDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_secondDotsColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+            getColor(context, R.color.loader_selected)
+        )
 
         this.thirdDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_thirdDotsColor,
-            ContextCompat.getColor(context, R.color.loader_selected))
+            getColor(context, R.color.loader_selected)
+        )
 
         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.AllianceLoader_alliance_drawOnlyStroke, false)
 
