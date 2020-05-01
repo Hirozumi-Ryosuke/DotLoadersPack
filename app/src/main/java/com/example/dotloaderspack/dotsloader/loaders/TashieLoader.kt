@@ -101,7 +101,7 @@ class TashieLoader : AbstractLinearLayout {
         })
     }
 
-    private fun startLoading() {
+    fun startLoading() {
 
         for (iCount in 0 until noOfDots) {
             val anim = getScaleAnimation(isDotsExpanding, iCount)
@@ -156,8 +156,7 @@ class TashieLoader : AbstractLinearLayout {
                     }
                 }
 
-                override fun onAnimationStart(p0: Animation?) {
-                }
+                override fun onAnimationStart(p0: Animation?) = Unit
 
             })
         }
