@@ -177,7 +177,8 @@ class AllianceLoader : LinearLayout, LoaderContract {
         val fullDistance = (calWidthHeight - ((2 * dotsRadius) + strokeWidth)).toFloat()
         val halfDistance = fullDistance / 2
 
-        val firstPosArray = ArrayList<Pair<Float, Float>>()
+        val firstPosArray = arrayListOf<Pair<Float, Float>>()
+
         firstPosArray.add(Pair(0.0f, 0.0f))
         firstPosArray.add(Pair(halfDistance, fullDistance))
         firstPosArray.add(Pair(-halfDistance, fullDistance))
@@ -215,9 +216,7 @@ class AllianceLoader : LinearLayout, LoaderContract {
 
             override fun onAnimationEnd(p0: Animation?) {
                 step++
-                if (step > 2) {
-                    step = 0
-                }
+                if (step > 2) step = 0
                 startLoading()
             }
 
