@@ -5,6 +5,7 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.*
+import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.dotsloader.loaders.*
 
 
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             5,
             30,
             10,
-            getColor(this, R.color.red)
+            getColor(this, red)
         )
 
 
@@ -55,9 +56,9 @@ class MainActivity : AppCompatActivity() {
             6,
             true,
             10,
-            getColor(this, R.color.red),
-            getColor(this, R.color.amber),
-            getColor(this, R.color.green)
+            getColor(this, red),
+            getColor(this, amber),
+            getColor(this, green)
         ).apply {
             animDuration = 5000
         }
@@ -70,8 +71,8 @@ class MainActivity : AppCompatActivity() {
             this,
             60,
             4,
-            getColor(this, R.color.red),
-            getColor(this, R.color.red)
+            getColor(this, red),
+            getColor(this, red)
         )
             .apply {
                 animDuration = 200
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRotatingCircularDotsLoader() {
         val loader = RotatingCircularDotsLoader(this,
-            20, 60, getColor(this, R.color.red)
+            20, 60, getColor(this, red)
         )
             .apply {
                 animDuration = 10000
@@ -109,9 +110,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initSlidongLoader() {
         val sliding = SlidingLoader(this, 20, 5,
-            getColor(this, R.color.red),
-            getColor(this, R.color.yellow),
-            getColor(this, R.color.green)
+            getColor(this, red),
+            getColor(this, yellow),
+            getColor(this, green)
         ).apply {
             animDuration = 1500
             distanceToMove = 12
@@ -124,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         val tashie = TashieLoader(
             this, 5,
             30, 10,
-            getColor(this, R.color.green)
+            getColor(this, green)
         )
             .apply {
                 animDuration = 500
@@ -136,9 +137,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLazyLoader() {
         val lazyLoader = LazyLoader(this, 15, 5,
-            getColor(this, R.color.loader_selected),
-            getColor(this, R.color.loader_selected),
-            getColor(this, R.color.loader_selected)
+            getColor(this, loader_selected),
+            getColor(this, loader_selected),
+            getColor(this, loader_selected)
         )
             .apply {
                 animDuration = 500
@@ -161,13 +162,13 @@ class MainActivity : AppCompatActivity() {
     private fun initCircularDotsLoader() {
         val cirLoader = CircularDotsLoader(this@MainActivity)
         cirLoader.setPadding(20, 20, 20, 20)
-        cirLoader.defaultColor = getColor(this, R.color.blue_delfault)
-        cirLoader.selectedColor = getColor(this, R.color.blue_selected)
+        cirLoader.defaultColor = getColor(this, blue_delfault)
+        cirLoader.selectedColor = getColor(this, blue_selected)
         cirLoader.bigCircleRadius = 116
         cirLoader.radius = 40
         cirLoader.animDur = 100
-        cirLoader.firstShadowColor = getColor(this, R.color.pink_selected)
-        cirLoader.secondShadowColor = getColor(this, R.color.purple_selected)
+        cirLoader.firstShadowColor = getColor(this, pink_selected)
+        cirLoader.secondShadowColor = getColor(this, purple_selected)
         cirLoader.showRunningShadow = true
 
         containerLL.addView(cirLoader)
@@ -175,8 +176,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLinearDotsLoader() {
         val loader = LinearDotsLoader(this)
-        loader.defaultColor = getColor(this, R.color.loader_defalut)
-        loader.selectedColor = getColor(this, R.color.loader_selected)
+        loader.defaultColor = getColor(this, loader_defalut)
+        loader.selectedColor = getColor(this, loader_selected)
         loader.isSingleDir = false
         loader.noOfDots = 5
         loader.selRadius = 60
@@ -184,8 +185,8 @@ class MainActivity : AppCompatActivity() {
         loader.radius = 40
         loader.dotsDistance = 20
         loader.animDur = 1000
-        loader.firstShadowColor = getColor(this, R.color.pink_selected)
-        loader.secondShadowColor = getColor(this, R.color.purple_selected)
+        loader.firstShadowColor = getColor(this, pink_selected)
+        loader.secondShadowColor = getColor(this, purple_selected)
         loader.showRunningShadow = false
         containerLL.addView(loader)
 
