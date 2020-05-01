@@ -1,5 +1,7 @@
 package com.example.dotloaderspack.dotsloader.loaders
 
+import android.R.*
+import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
@@ -12,6 +14,7 @@ import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
+import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
 import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
@@ -28,9 +31,9 @@ class AllianceLoader : LinearLayout, LoaderContract {
             field = if (value < 1) 1 else value
         }
 
-    private var firsDotColor = getColor(context, android.R.color.holo_red_dark)
-    private var secondDotColor = getColor(context, android.R.color.holo_green_dark)
-    private var thirdDotColor = getColor(context, R.color.loader_selected)
+    private var firsDotColor = getColor(context, holo_red_dark)
+    private var secondDotColor = getColor(context, holo_green_dark)
+    private var thirdDotColor = getColor(context, loader_selected)
 
     var animDuration = 500
 
@@ -79,15 +82,15 @@ class AllianceLoader : LinearLayout, LoaderContract {
         this.distanceMultiplier = typedArray.getInteger(R.styleable.AllianceLoader_alliance_distanceMultiplier, 4)
 
         this.firsDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_firstDotsColor,
-            getColor(context, R.color.loader_selected)
+            getColor(context, loader_selected)
         )
 
         this.secondDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_secondDotsColor,
-            getColor(context, R.color.loader_selected)
+            getColor(context, loader_selected)
         )
 
         this.thirdDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_thirdDotsColor,
-            getColor(context, R.color.loader_selected)
+            getColor(context, loader_selected)
         )
 
         this.drawOnlyStroke = typedArray.getBoolean(R.styleable.AllianceLoader_alliance_drawOnlyStroke, false)
