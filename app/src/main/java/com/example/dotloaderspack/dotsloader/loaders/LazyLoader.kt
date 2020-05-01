@@ -9,6 +9,7 @@ import android.view.Gravity.*
 import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.*
 import android.view.animation.*
+import android.view.animation.Animation.*
 import android.view.animation.AnimationUtils.*
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -148,7 +149,7 @@ class LazyLoader : ThreeDotsBaseView {
             thirdCircle.startAnimation(trans3Anim)
         }, secondDelayDuration.toLong())
 
-        trans3Anim.setAnimationListener(object : Animation.AnimationListener {
+        trans3Anim.setAnimationListener(object : AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
             }
 
@@ -162,11 +163,11 @@ class LazyLoader : ThreeDotsBaseView {
     }
 
     private fun getTranslateAnim(): TranslateAnimation {
-        val transAnim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
+        val transAnim = TranslateAnimation(0f, 0f, 0f, -(4 * dotsRadius).toFloat())
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.repeatCount = 1
-        transAnim.repeatMode = Animation.REVERSE
+        transAnim.repeatMode = REVERSE
         transAnim.interpolator = interpolator
 
         return transAnim

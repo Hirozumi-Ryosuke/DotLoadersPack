@@ -3,14 +3,12 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.*
 import android.view.ViewTreeObserver
 import android.view.animation.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.RelativeLayout.*
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R
 import com.example.dotloaderspack.dotsloader.basicviews.CircleView
@@ -183,41 +181,50 @@ class BounceLoader : LinearLayout, LoaderContract {
 
     private fun getBallAnimation(): Animation {
         return when (state) {
-            STATE_GOINGDOWN -> {
-                TranslateAnimation(0.0f, 0.0f,
-                    (-6 * ballRadius).toFloat(), 0.0f)
-                    .apply {
-                        duration = animDuration.toLong()
-                        interpolator = AccelerateInterpolator()
-                    }
-            }
-
-            STATE_SQUEEZING -> {
-                ScaleAnimation(1.0f, 1.0f, 1.0f, 0.85f
-                    , ballRadius.toFloat(), (2 * ballRadius).toFloat())
-                    .apply {
-                        duration = (animDuration / 20).toLong()
-                        interpolator = AccelerateInterpolator()
-                    }
-            }
-
-            STATE_RESIZING -> {
-                ScaleAnimation(1.0f, 1.0f, 0.85f, 1.0f
-                    , ballRadius.toFloat(), (2 * ballRadius).toFloat())
-                    .apply {
-                        duration = (animDuration / 20).toLong()
-                        interpolator = DecelerateInterpolator()
-                    }
-            }
-
-            else -> {
-                TranslateAnimation(0.0f, 0.0f,
-                    0.0f, (-6 * ballRadius).toFloat())
-                    .apply {
-                        duration = animDuration.toLong()
-                        interpolator = DecelerateInterpolator()
-                    }
-            }
+            STATE_GOINGDOWN -> TranslateAnimation(
+                0.0f,
+                0.0f,
+                (-6 * ballRadius).toFloat(),
+                0.0f
+            )
+                .apply {
+                    duration = animDuration.toLong()
+                    interpolator = AccelerateInterpolator()
+                }
+            STATE_SQUEEZING -> ScaleAnimation(
+                1.0f,
+                1.0f,
+                1.0f,
+                0.85f,
+                ballRadius.toFloat(),
+                (2 * ballRadius).toFloat()
+            )
+                .apply {
+                    duration = (animDuration / 20).toLong()
+                    interpolator = AccelerateInterpolator()
+                }
+            STATE_RESIZING -> ScaleAnimation(
+                1.0f,
+                1.0f,
+                0.85f,
+                1.0f,
+                ballRadius.toFloat(),
+                (2 * ballRadius).toFloat()
+            )
+                .apply {
+                    duration = (animDuration / 20).toLong()
+                    interpolator = DecelerateInterpolator()
+                }
+            else -> TranslateAnimation(
+                0.0f,
+                0.0f,
+                0.0f,
+                (-6 * ballRadius).toFloat()
+            )
+                .apply {
+                    duration = animDuration.toLong()
+                    interpolator = DecelerateInterpolator()
+                }
         }.apply {
             fillAfter = true
             repeatCount = 0
@@ -234,11 +241,21 @@ class BounceLoader : LinearLayout, LoaderContract {
 
         when (state) {
             STATE_COMINGUP -> {
-                transAnim = TranslateAnimation(0.0f, (-4 * ballRadius).toFloat(),
-                    0.0f, (-3 * ballRadius).toFloat())
+                transAnim = TranslateAnimation(
+                    0.0f,
+                    (-4 * ballRadius).toFloat(),
+                    0.0f,
+                    (-3 * ballRadius).toFloat()
+                )
 
-                scaleAnim = ScaleAnimation(0.9f, 0.5f, 0.9f, 0.5f,
-                    ballRadius.toFloat(), ballRadius.toFloat())
+                scaleAnim = ScaleAnimation(
+                    0.9f,
+                    0.5f,
+                    0.9f,
+                    0.5f,
+                    ballRadius.toFloat(),
+                    ballRadius.toFloat()
+                )
 
                 alphaAnim = AlphaAnimation(0.6f, 0.2f)
 

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.Gravity.*
 import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.*
 import android.view.animation.Animation.*
 import android.widget.LinearLayout
@@ -61,23 +62,23 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, TrailingCircularDotsLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(
+        dotsRadius = typedArray.getDimensionPixelSize(
             TrailingCircularDotsLoader_trailingcircular_dotsRadius, 50)
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(
+        bigCircleRadius = typedArray.getDimensionPixelSize(
             TrailingCircularDotsLoader_trailingcircular_bigCircleRadius, 200)
 
-        this.circleColor = typedArray.getColor(
+        circleColor = typedArray.getColor(
             TrailingCircularDotsLoader_trailingcircular_dotsColor,
             getColor(context, loader_selected)
         )
 
-        this.noOfTrailingDots = typedArray.getInt(
+        noOfTrailingDots = typedArray.getInt(
             TrailingCircularDotsLoader_trailingcircular_noOfTrailingDots, 6)
 
 
-        this.animDuration = typedArray.getInt(
+        animDuration = typedArray.getInt(
             TrailingCircularDotsLoader_trailingcircular_animDuration, 2000)
-        this.animDelay = typedArray.getInt(TrailingCircularDotsLoader_trailingcircular_animDelay, animDuration / 10)
+        animDelay = typedArray.getInt(TrailingCircularDotsLoader_trailingcircular_animDelay, animDuration / 10)
 
         typedArray.recycle()
     }
@@ -125,7 +126,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         val loaderView = this
 
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 

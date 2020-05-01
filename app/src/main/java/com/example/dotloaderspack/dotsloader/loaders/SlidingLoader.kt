@@ -157,10 +157,12 @@ class SlidingLoader : ThreeDotsBaseView {
 
 
     private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
-        val transAnim = TranslateAnimation(if (isForwardDir) 0f
+        val transAnim = TranslateAnimation(
+            if (isForwardDir) 0f
             else (distanceToMove * dotsRadius).toFloat(),
             if (isForwardDir) (distanceToMove * dotsRadius).toFloat()
             else 0f, 0f, 0f)
+
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.interpolator = interpolator

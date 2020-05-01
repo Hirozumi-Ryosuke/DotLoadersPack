@@ -3,7 +3,7 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.*
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
@@ -19,9 +19,9 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class ZeeLoader : LinearLayout, LoaderContract {
 
-    var dotsRadius: Int = 50
+    var dotsRadius = 50
 
-    var distanceMultiplier: Int = 4
+    private var distanceMultiplier = 4
         set(value) {
             field = if (value < 1) 1
             else value
@@ -120,7 +120,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
         this.addView(relativeLayout, relParam)
 
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
                 this@ZeeLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)

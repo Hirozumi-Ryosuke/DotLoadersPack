@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
@@ -62,7 +63,16 @@ class AllianceLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context?, dotsRadius: Int, distanceMultiplier: Int, drawOnlyStroke: Boolean, strokeWidth: Int, firsDotColor: Int, secondDotColor: Int, thirdDotColor: Int) : super(context) {
+    constructor(
+        context: Context?,
+        dotsRadius: Int,
+        distanceMultiplier: Int,
+        drawOnlyStroke: Boolean,
+        strokeWidth: Int,
+        firsDotColor: Int,
+        secondDotColor: Int,
+        thirdDotColor: Int
+    ) : super(context) {
         this.dotsRadius = dotsRadius
         this.distanceMultiplier = distanceMultiplier
         this.drawOnlyStroke = drawOnlyStroke
@@ -77,23 +87,23 @@ class AllianceLoader : LinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, AllianceLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(AllianceLoader_alliance_dotsRadius, 50)
+        dotsRadius = typedArray.getDimensionPixelSize(AllianceLoader_alliance_dotsRadius, 50)
 
-        this.distanceMultiplier = typedArray.getInteger(AllianceLoader_alliance_distanceMultiplier, 4)
+        distanceMultiplier = typedArray.getInteger(AllianceLoader_alliance_distanceMultiplier, 4)
 
-        this.firsDotColor = typedArray.getColor(AllianceLoader_alliance_firstDotsColor, getColor(context, loader_selected))
+        firsDotColor = typedArray.getColor(AllianceLoader_alliance_firstDotsColor, getColor(context, loader_selected))
 
-        this.secondDotColor = typedArray.getColor(AllianceLoader_alliance_secondDotsColor, getColor(context, loader_selected))
+        secondDotColor = typedArray.getColor(AllianceLoader_alliance_secondDotsColor, getColor(context, loader_selected))
 
-        this.thirdDotColor = typedArray.getColor(AllianceLoader_alliance_thirdDotsColor, getColor(context, loader_selected))
+        thirdDotColor = typedArray.getColor(AllianceLoader_alliance_thirdDotsColor, getColor(context, loader_selected))
 
-        this.drawOnlyStroke = typedArray.getBoolean(AllianceLoader_alliance_drawOnlyStroke, false)
+        drawOnlyStroke = typedArray.getBoolean(AllianceLoader_alliance_drawOnlyStroke, false)
 
         if (drawOnlyStroke) {
-            this.strokeWidth = typedArray.getDimensionPixelSize(AllianceLoader_alliance_strokeWidth, 20)
+            strokeWidth = typedArray.getDimensionPixelSize(AllianceLoader_alliance_strokeWidth, 20)
         }
 
-        this.animDuration = typedArray.getInt(AllianceLoader_alliance_animDuration, 500)
+        animDuration = typedArray.getInt(AllianceLoader_alliance_animDuration, 500)
 
         typedArray.recycle()
     }
@@ -152,7 +162,7 @@ class AllianceLoader : LinearLayout, LoaderContract {
         val loaderView = this
 
 
-        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 

@@ -9,6 +9,7 @@ import com.example.dotloaderspack.R.styleable
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.CircularAbstractView
 import com.example.dotloaderspack.dotsloader.utils.Utils
+import com.example.dotloaderspack.dotsloader.utils.Utils.scanForActivity
 import java.util.*
 
 class CircularDotsLoader : CircularAbstractView {
@@ -63,7 +64,7 @@ class CircularDotsLoader : CircularAbstractView {
 
                 if (selectedDotPos > noOfDots) selectedDotPos = 1
 
-                Utils.scanForActivity(context)?.runOnUiThread { invalidate() }
+                scanForActivity(context)?.runOnUiThread { invalidate() }
             }
         }, 0, animDur.toLong())
     }
@@ -113,7 +114,6 @@ class CircularDotsLoader : CircularAbstractView {
                     )
                 }
             }
-
         }
     }
 }

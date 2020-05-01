@@ -3,7 +3,6 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.View
 import android.view.ViewTreeObserver.*
 import android.view.animation.*
 import android.view.animation.Animation.*
@@ -152,8 +151,8 @@ class TashieLoader : AbstractLinearLayout {
 
                 override fun onAnimationEnd(p0: Animation?) {
                     when {
-                        !isDotsExpanding -> dotsArray[dotPosition]!!.visibility = View.VISIBLE
-                        isDotsExpanding -> dotsArray[dotPosition]!!.visibility = View.INVISIBLE
+                        !isDotsExpanding -> dotsArray[dotPosition]!!.visibility = VISIBLE
+                        isDotsExpanding -> dotsArray[dotPosition]!!.visibility = INVISIBLE
                     }
                 }
 

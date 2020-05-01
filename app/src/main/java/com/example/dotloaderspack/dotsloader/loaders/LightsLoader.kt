@@ -17,17 +17,17 @@ import com.example.dotloaderspack.dotsloader.utils.random
 
 class LightsLoader : LinearLayout, LoaderContract {
 
-    var noOfCircles: Int = 3
+    var noOfCircles = 3
         set(value) {
             field = if (value < 1) 1 else value
         }
 
-    var circleRadius: Int = 30
-    var circleDistance: Int = 10
+    var circleRadius = 30
+    var circleDistance = 10
 
-    var circleColor: Int = getColor(context, holo_purple)
+    var circleColor = getColor(context, holo_purple)
 
-    private var calWidthHeight: Int = 0
+    private var calWidthHeight = 0
 
     private lateinit var circlesList: ArrayList<CircleView>
 
@@ -63,10 +63,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         circleRadius = typedArray.getDimensionPixelSize(LightsLoader_lights_circleRadius, 30)
         circleDistance = typedArray.getDimensionPixelSize(LightsLoader_lights_circleDistance, 10)
 
-        circleColor = typedArray.getColor(
-            LightsLoader_lights_circleColor,
-            getColor(context, holo_purple)
-        )
+        circleColor = typedArray.getColor(LightsLoader_lights_circleColor, getColor(context, holo_purple))
 
         typedArray.recycle()
     }
@@ -133,7 +130,9 @@ class LightsLoader : LinearLayout, LoaderContract {
 
     private fun startLoading() {
         for (count in 0 until noOfCircles) {
-            for (item in circlesList) item.startAnimation(getAlphaAnimation())
+            for (item in circlesList) {
+                item.startAnimation(getAlphaAnimation())
+            }
         }
     }
 

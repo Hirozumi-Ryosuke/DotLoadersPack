@@ -7,6 +7,7 @@ import android.view.View
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.contracts.DotsLoaderBaseView
 import com.example.dotloaderspack.dotsloader.utils.Utils
+import com.example.dotloaderspack.dotsloader.utils.Utils.scanForActivity
 import java.util.*
 
 class LinearDotsLoader : DotsLoaderBaseView {
@@ -15,7 +16,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
 
     var isSingleDir = true
 
-    private var diffRadius: Int = 0
+    private var diffRadius = 0
     private var isFwdDir = true
 
     constructor(context: Context) : super(context) {
@@ -115,7 +116,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
                     }
                 }
 
-                (Utils.scanForActivity(context))?.runOnUiThread { invalidate() }
+                (scanForActivity(context))?.runOnUiThread { invalidate() }
             }
         }, 0, animDur.toLong())
     }

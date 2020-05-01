@@ -115,7 +115,7 @@ class PullInLoader : LinearLayout, LoaderContract {
     override fun onVisibilityChanged(changedView: View, visibility: Int) {
         super.onVisibilityChanged(changedView, visibility)
 
-        if (visibility != View.VISIBLE) {
+        if (visibility != VISIBLE) {
             initView()
         } else {
             circularLoaderBaseView.clearAnimation()

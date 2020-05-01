@@ -3,15 +3,13 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.*
-import android.view.animation.Animation
 import android.view.animation.Animation.*
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import com.example.dotloaderspack.R
+import androidx.core.content.ContextCompat.*
 import com.example.dotloaderspack.R.color.*
 import com.example.dotloaderspack.R.styleable.*
 import com.example.dotloaderspack.dotsloader.basicviews.CircularLoaderBaseView
@@ -19,11 +17,11 @@ import com.example.dotloaderspack.dotsloader.contracts.LoaderContract
 
 class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
-    var dotsRadius: Int = 30
-    var dotsColor: Int = ContextCompat.getColor(context, loader_selected)
-    var bigCircleRadius: Int = 90
+    var dotsRadius = 30
+    var dotsColor = getColor(context, loader_selected)
+    var bigCircleRadius = 90
 
-    var animDuration: Int = 5000
+    var animDuration = 5000
 
     private lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
@@ -59,7 +57,8 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         this.dotsColor = typedArray.getColor(
             RotatingCircularDotsLoader_rotatingcircular_dotsColor,
-            ContextCompat.getColor(context, loader_selected))
+            getColor(context, loader_selected)
+        )
 
         this.bigCircleRadius = typedArray.getDimensionPixelSize(
             RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
@@ -72,10 +71,9 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val calWidth = 2 * this.bigCircleRadius + 2 * dotsRadius
-        val calHeight = calWidth
+        val calWidth = 2 * bigCircleRadius + 2 * dotsRadius
 
-        setMeasuredDimension(calWidth, calHeight)
+        setMeasuredDimension(calWidth, calWidth)
     }
 
     private fun initView() {
@@ -112,9 +110,14 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     private fun getRotateAnimation(): RotateAnimation {
 
-        val transAnim = RotateAnimation(0f, 360f,
-            RELATIVE_TO_SELF, 0.5f,
-            RELATIVE_TO_SELF, 0.5f)
+        val transAnim = RotateAnimation(
+            0f,
+            360f,
+            RELATIVE_TO_SELF,
+            0.5f,
+            RELATIVE_TO_SELF,
+            0.5f
+        )
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
         transAnim.repeatCount = INFINITE
@@ -123,6 +126,4 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         return transAnim
     }
-
-
 }
