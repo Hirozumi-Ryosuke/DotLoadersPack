@@ -8,11 +8,11 @@ import com.example.dotloaderspack.dotsloader.contracts.AbstractLinearLayout
 
 abstract class ThreeDotsBaseView : AbstractLinearLayout {
 
-    var firstDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
+    var firstDotColor = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
+    var secondDotColor = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var thirdDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
+    var thirdDotColor = ContextCompat.getColor(context, R.color.loader_defalut)
 
     protected lateinit var firstCircle: CircleView
     protected lateinit var secondCircle: CircleView
