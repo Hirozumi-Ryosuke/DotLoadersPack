@@ -3,7 +3,6 @@ package com.example.dotloaderspack.dotsloader.loaders
 import android.R.color.*
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
@@ -121,10 +120,10 @@ class AllianceLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        this.gravity = CENTER_HORIZONTAL
 
         relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
+        relativeLayout.gravity = CENTER_HORIZONTAL
 
 
         if (calWidthHeight == 0) {
@@ -158,14 +157,13 @@ class AllianceLoader : LinearLayout, LoaderContract {
         initInitialValues()
 
 
-        val loaderView = this
 
 
         viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
 
-                val vto = loaderView.viewTreeObserver
+                val vto = viewTreeObserver
                 vto.removeOnGlobalLayoutListener(this)
             }
         })
